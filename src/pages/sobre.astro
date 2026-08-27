@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Section from '../components/Section.astro';
+import FoundersSection from '../components/FoundersSection.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const title = 'Sobre a Splash Sistemas: estúdio de software sob medida';
+const description =
+  'A Splash são dois desenvolvedores que atendem cada projeto de ponta a ponta. Conheça como a gente trabalha e o que entrega.';
+
+const regras = [
+  {
+    t: 'Escopo e preço fechados antes de começar',
+    d: 'Você sabe o que vai receber e quanto custa. Sem cobrança por hora, sem surpresa no fim.',
+  },
+  {
+    t: 'Entrega em partes usáveis',
+    d: 'Cada etapa que sobe já serve para alguma coisa. Você não espera meses para ver algo funcionando.',
+  },
+  {
+    t: 'O código e os dados são seus',
+    d: 'Acesso completo ao repositório e ao banco. Se um dia quiser levar para outra pessoa, leva.',
+  },
+  {
+    t: 'Conversa em português',
+    d: 'Decisão técnica explicada de um jeito que você entende e consegue discordar.',
+  },
+];
+---
+<BaseLayout title={title} description={description} path="/sobre">
+  <Breadcrumbs items={[{ label: 'Sobre' }]} />
+
+  <section class="border-b border-linha">
+    <div class="mx-auto max-w-wrap px-6 pb-20 pt-14 md:pb-24 md:pl-[88px] md:pr-10">
+      <p class="ref mb-4 text-mare">Estúdio de software sob medida</p>
+      <h1 class="max-w-[20ch] text-[40px] font-extrabold leading-[1.06] md:text-[56px]">
+        A Splash são duas pessoas que escrevem o código e atendem você.
+      </h1>
+      <p class="mt-6 max-w-[60ch] text-[20px] leading-snug">
+        Sem equipe de vendas, sem terceirização, sem intermediário entre a sua ideia e quem
+        programa.
+      </p>
+    </div>
+  </section>
+
+  <Section refLabel="Como começou">
+    <div class="grid gap-14 md:grid-cols-[1fr_1.4fr]">
+      <h2 class="text-[28px] font-bold leading-[1.14] md:text-[34px]">
+        Cansados de ver negócio bom preso em ferramenta ruim.
+      </h2>
+      <div class="flex flex-col gap-[18px] text-[16.5px]">
+        <p>
+          O Bernardo e o Selso já trabalhavam com desenvolvimento quando começaram a pegar,
+          juntos, sempre o mesmo tipo de pedido: comércios com site que ninguém achava, empresas
+          refazendo o mesmo controle em três planilhas.
+        </p>
+        <p>
+          A resposta padrão do mercado era um tema comprado com dez plugins por cima, ou um sistema
+          gigante que não encaixava em nada. Os dois preferiram fazer diferente: sentar com o
+          cliente, entender o processo de verdade e construir só o que aquele caso pedia.
+        </p>
+        <p>
+          A Splash nasceu disso. O nome é sobre respingo, e sobre fazer a coisa certa sem espalhar
+          bagunça em volta.
+        </p>
+        {/* TODO: incluir [NÚMEROS] reais (ano de início, quantidade de projetos) apenas se verdadeiros. */}
+      </div>
+    </div>
+  </Section>
+
+  <Section refLabel="Quem faz">
+    <h2 class="text-[28px] font-bold leading-[1.14] md:text-[34px]">Os dois fundadores</h2>
+    <FoundersSection variant="full" />
+    <p class="mt-5 max-w-[64ch] text-[15px] text-concreto">
+      Nos dois casos, a mesma pessoa que você conhece na primeira conversa segue no projeto até o
+      fim. Nada de "vou passar para o time responsável".
+    </p>
+  </Section>
+
+  <Section refLabel="Como trabalham">
+    <h2 class="text-[28px] font-bold leading-[1.14] md:text-[34px]">Quatro regras que não mudam</h2>
+    <div class="mt-9 grid gap-10 md:grid-cols-2">
+      {
+        regras.map((r) => (
+          <div>
+            <h3 class="text-[18px] font-bold">{r.t}</h3>
+            <p class="mt-2 text-[15px] text-concreto">{r.d}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section refLabel="Como atende">
+    <h2 class="max-w-[26ch] text-[28px] font-bold leading-[1.14] md:text-[34px]">
+      Presencial quando dá para sentar na mesma mesa. Remoto para o resto.
+    </h2>
+    <p class="mt-4 max-w-[62ch] text-[15.5px] text-concreto">
+      Quando a distância permite, a gente prefere as primeiras conversas presenciais, porque ajuda
+      a entender o processo de perto. Fora disso, o projeto roda por chamada de vídeo, com o mesmo
+      acompanhamento e a mesma proximidade.
+    </p>
+    <span class="dim mt-6">
+      <span>resposta no WhatsApp</span><span class="rule"></span
+      ><span class="font-semibold text-tinta">≤ 1 dia útil</span>
+    </span>
+  </Section>
+
+  <CtaBand title="Quer conversar sobre um projeto?" />
+</BaseLayout>

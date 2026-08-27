@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://splashsistemas.com.br/sitemap-index.xml

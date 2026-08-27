@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { FOOTER_LINKS } from '../consts';
+---
+<BaseLayout
+  title="Página não encontrada | Splash Sistemas"
+  description="A página que você procurou não existe ou mudou de endereço."
+  path="/404"
+  noindex
+>
+  <section class="mx-auto max-w-wrap px-6 py-28 md:pl-[88px] md:pr-10">
+    <p class="ref text-mare">Erro 404</p>
+    <h1 class="mt-3 max-w-[18ch] text-[40px] font-extrabold leading-[1.05] md:text-[56px]">
+      Essa página não está aqui.
+    </h1>
+    <p class="mt-5 max-w-[52ch] text-[19px] text-concreto">
+      O endereço pode ter mudado. Tente uma destas páginas ou volte para o início.
+    </p>
+    <div class="mt-8">
+      <Button href="/" icon="arrow-right" iconAfter>Voltar para o início</Button>
+    </div>
+    <ul class="mt-10 flex flex-wrap gap-x-8 gap-y-2 text-[15px]">
+      {
+        [...FOOTER_LINKS.servicos, ...FOOTER_LINKS.conteudo].map((l) => (
+          <li>
+            <a class="text-mare" href={l.href}>
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

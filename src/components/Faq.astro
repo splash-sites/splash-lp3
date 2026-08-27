@@ -1,0 +1,39 @@
+---
+import Icon from './Icon.astro';
+import JsonLd from './JsonLd.astro';
+
+interface Props {
+  items: { q: string; a: string }[];
+  heading?: string;
+  /** quando true, emite o schema FAQPage */
+  emitSchema?: boolean;
+}
+const { items, heading = 'Perguntas frequentes', emitSchema = true } = Astro.props;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((it) => ({
+    '@type': 'Question',
+    name: it.q,
+    acceptedAnswer: { '@type': 'Answer', text: it.a },
+  })),
+};
+---
+<h2 class="text-[32px] font-bold leading-[1.12] md:text-[38px]">{heading}</h2>
+<div class="mt-9 border-t border-linha">
+  {
+    items.map((it) => (
+      <details class="group border-b border-linha">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-6 py-6 text-[17px] font-bold text-tinta [&::-webkit-details-marker]:hidden">
+          {it.q}
+          <span class="shrink-0 text-concreto transition-transform group-open:rotate-180">
+            <Icon name="chevron-down" size={20} />
+          </span>
+        </summary>
+        <p class="max-w-[70ch] pb-6 text-[15.5px] leading-relaxed text-concreto">{it.a}</p>
+      </details>
+    ))
+  }
+</div>
+{emitSchema && <JsonLd data={jsonLd} />}

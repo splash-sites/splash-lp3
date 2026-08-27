@@ -1,0 +1,17 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 5600, "title": "Home — desktop 1440" },
+    { "file": "Servico.dc.html", "x": 1600, "y": 0, "w": 1440, "h": 3900, "title": "Serviço — molde \"Criação de Sites\"" },
+    { "file": "BlogIndice.dc.html", "x": 3200, "y": 0, "w": 1440, "h": 2400, "title": "Blog — índice" },
+    { "file": "BlogArtigo.dc.html", "x": 4800, "y": 0, "w": 1440, "h": 3400, "title": "Blog — artigo" },
+    { "file": "Sobre.dc.html", "x": 6400, "y": 0, "w": 1440, "h": 3600, "title": "Sobre" },
+    { "file": "Contato.dc.html", "x": 8000, "y": 0, "w": 1440, "h": 1500, "title": "Contato" },
+    { "file": "HomeMobile.dc.html", "x": 9600, "y": 0, "w": 375, "h": 5800, "title": "Home — mobile 375" }
+  ],
+  "annotations": [
+    { "id": "sistema", "x": 0, "y": -300, "w": 620, "text": "SPLASH SISTEMAS — site institucional\n\nConceito: prancha técnica. Coluna de medida à esquerda, linhas de cota anotando números reais, cartões retos com fio de 1px. Assinatura \"splash\" (mancha de tinta na água) só no hero da Home e no CTA final.\n\nCor: acento azul/índigo original — --mare oklch(56% 0.19 258). Neutros com leve viés do acento: --tinta #0E1420 · --concreto #5A6070 · --bruma #DFE3EC · --areia #F2F4F8 · --papel #FFFFFF. --respingo só na mancha de tinta. Escuro via tokens — chip \"Tema\" acima de cada artboard.\n\nTipos: Bricolage Grotesque (display) · Archivo (texto) · IBM Plex Mono (dados/legenda).\n\nTorres / litoral: fora da parte visível do site, só no que é técnico (SEO, schema, ficha do Google)." },
+    { "id": "placeholders", "x": 3200, "y": -300, "w": 560, "text": "SEM PROVA SOCIAL INVENTADA\n\nTodo bloco de case, depoimento, imagem de artigo e mapa está marcado [ ESPAÇO PARA ... REAL ]. Nenhum nome de cliente, logo ou métrica foi criado. Preencher só com material autorizado." },
+    { "id": "mobile", "x": 9600, "y": -300, "w": 460, "text": "HOME MOBILE (375px)\n\nMesma ordem da Home desktop, coluna única. Sem barra de status falsa e sem teclado falso — o aparelho real desenha isso por cima. Alvos de toque ≥ 44px." }
+  ],
+  "launch": { "view": "canvas" }
+}

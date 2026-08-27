@@ -1,0 +1,35 @@
+---
+import { CONTACT, whatsappHref } from '../consts';
+import Button from './Button.astro';
+import SplashMark from './SplashMark.astro';
+
+interface Props {
+  refLabel?: string;
+  title?: string;
+  text?: string;
+}
+const {
+  refLabel = 'Próximo passo',
+  title = 'Manda uma mensagem contando o que você precisa.',
+  text = 'A gente responde com um plano do que dá para fazer e em quanto tempo, não um orçamento genérico de dez páginas.',
+} = Astro.props;
+---
+<section class="relative overflow-hidden border-t border-linha py-20 md:py-28">
+  <SplashMark
+    variant="cta"
+    class="pointer-events-none absolute left-[42%] top-[-30px] h-[320px] w-[420px] opacity-80"
+  />
+  <div class="relative mx-auto max-w-wrap px-6 md:pl-[88px] md:pr-10">
+    <p class="ref">{refLabel}</p>
+    <h2 class="mt-4 max-w-[18ch] text-[34px] font-extrabold leading-[1.08] md:text-[46px]">
+      {title}
+    </h2>
+    <p class="mt-5 max-w-[62ch] text-[19px] leading-snug">{text}</p>
+    <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+      <Button href={whatsappHref} icon="whatsapp" external>Chamar no WhatsApp</Button>
+      <Button href={`mailto:${CONTACT.email}`} variant="ghost" icon="mail">
+        {CONTACT.email}
+      </Button>
+    </div>
+  </div>
+</section>

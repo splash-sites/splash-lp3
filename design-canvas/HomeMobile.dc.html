@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: #F2F4F8; }
+    .page {
+      --tinta: #0E1420; --mare: oklch(56% 0.19 258); --mare-forte: oklch(46% 0.19 258); --respingo: oklch(72% 0.15 252);
+      --concreto: #5A6070; --bruma: #DFE3EC; --areia: #F2F4F8; --papel: #FFFFFF;
+      --linha: rgba(14, 20, 32, 0.14); --linha-forte: rgba(14, 20, 32, 0.32);
+      font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; color: var(--tinta);
+      background: var(--areia); font-size: 16px; line-height: 1.58; -webkit-font-smoothing: antialiased;
+      width: 375px; min-height: 100%; overflow: hidden;
+    }
+    .page[data-theme="dark"] {
+      --tinta: #E9ECF4; --mare: oklch(72% 0.15 258); --mare-forte: oklch(80% 0.13 258); --respingo: oklch(78% 0.13 252);
+      --concreto: #8A92A6; --bruma: #1E2636; --areia: #0E1420; --papel: #171E2C;
+      --linha: rgba(233, 236, 244, 0.16); --linha-forte: rgba(233, 236, 244, 0.34);
+    }
+    .page a { color: var(--mare); text-decoration: none; }
+    h1, h2, h3 { font-family: 'Bricolage Grotesque', 'Archivo', sans-serif; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+    p { margin: 0; }
+    .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+    .ref { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--concreto); }
+    .pad { padding: 0 22px; }
+    .sec { padding: 56px 22px; border-top: 1px solid var(--linha); }
+    .kicker { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mare); }
+    .btn { display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 600; font-size: 16px; min-height: 52px; padding: 0 22px; border: 1px solid var(--mare); text-decoration: none; }
+    .btn-primary { background: var(--mare); color: #fff; }
+    .btn-ghost { background: transparent; color: var(--mare); }
+    .icon { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.6; }
+    .dim { display: flex; align-items: center; gap: 10px; color: var(--concreto); font-family: 'IBM Plex Mono', monospace; font-size: 12px; }
+    .dim .rule { height: 1px; background: var(--mare); flex: 1; position: relative; }
+    .dim .rule::before, .dim .rule::after { content: ""; position: absolute; top: -3px; width: 1px; height: 7px; background: var(--mare); }
+    .dim .rule::before { left: 0; } .dim .rule::after { right: 0; }
+    .mfoot a { display: flex; align-items: center; min-height: 44px; }
+  </style>
+</helmet>
+
+<div class="page" data-theme="{{theme}}">
+
+  <!-- NAV -->
+  <div class="pad" style="height: 60px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--linha);">
+    <div style="display: flex; align-items: baseline; gap: 8px;">
+      <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.03em;">Splash</span>
+      <span class="ref">Sistemas</span>
+    </div>
+    <button type="button" aria-label="Abrir menu" style="width: 44px; height: 44px; border: 1px solid var(--linha); background: var(--papel); display: flex; align-items: center; justify-content: center;">
+      <svg class="icon" style="stroke: var(--tinta);" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+
+  <!-- HERO -->
+  <div style="position: relative; overflow: hidden;">
+    <svg viewBox="0 0 400 400" aria-hidden="true" style="position: absolute; right: -60px; top: -30px; width: 360px; height: 360px; opacity: 0.85; pointer-events: none;">
+      <defs>
+        <filter id="ink" x="-30%" y="-30%" width="160%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="3" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="80" xChannelSelector="R" yChannelSelector="G"/><feGaussianBlur stdDeviation="1.2"/></filter>
+        <radialGradient id="drop" cx="45%" cy="42%" r="55%"><stop offset="0%" stop-color="var(--respingo)" stop-opacity="0.5"/><stop offset="55%" stop-color="var(--mare)" stop-opacity="0.28"/><stop offset="100%" stop-color="var(--mare)" stop-opacity="0"/></radialGradient>
+      </defs>
+      <g filter="url(#ink)"><circle cx="210" cy="180" r="150" fill="url(#drop)"/><circle cx="120" cy="90" r="14" fill="var(--mare)" fill-opacity="0.18"/></g>
+    </svg>
+    <div class="pad" style="padding-top: 44px; padding-bottom: 52px; position: relative;">
+      <p class="kicker" style="margin-bottom: 16px;">Sites e sistemas sob medida</p>
+      <h1 style="font-size: 38px; line-height: 1.06; font-weight: 800;">Cada projeto é desenhado do zero para o seu processo real.</h1>
+      <p style="font-size: 17px; color: var(--tinta); margin-top: 18px;">
+        Sites que convertem e aparecem no Google. Sistemas que cortam o trabalho manual. Cada um
+        desenhado sob medida — sem template, sem gambiarra.
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 26px;">
+        <a class="btn btn-primary" href="https://wa.me/5551982135882"><svg class="icon" style="stroke:#fff;" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg> Chamar no WhatsApp</a>
+        <a class="btn btn-ghost" href="#servicos">Ver os dois serviços</a>
+      </div>
+      <div class="dim" style="margin-top: 28px;"><span>meta de first-paint</span><span class="rule"></span><span style="color: var(--tinta); font-weight: 600;">&lt; 1s</span></div>
+    </div>
+  </div>
+
+  <!-- PROBLEMA x SOLUÇÃO -->
+  <div class="sec">
+    <p class="ref" style="color: var(--concreto);">SEC 01 — Diagnóstico</p>
+    <h2 style="font-size: 27px; line-height: 1.14; font-weight: 700; margin-top: 12px;">O que trava você hoje, e o que a gente entrega no lugar.</h2>
+    <p class="ref" style="color: var(--concreto); margin-top: 24px;">Trava hoje</p>
+    <ul style="list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; font-size: 15px;">
+      <li style="display: flex; gap: 12px;"><svg class="icon" style="stroke: var(--concreto);" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>Site feito em construtor que trava pra mudar qualquer coisa.</li>
+      <li style="display: flex; gap: 12px;"><svg class="icon" style="stroke: var(--concreto);" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>Ninguém acha a empresa no Google.</li>
+      <li style="display: flex; gap: 12px;"><svg class="icon" style="stroke: var(--concreto);" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>Agenda e estoque espalhados em planilha e WhatsApp.</li>
+      <li style="display: flex; gap: 12px;"><svg class="icon" style="stroke: var(--concreto);" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>O mesmo relatório refeito na mão toda semana.</li>
+    </ul>
+    <p class="ref" style="color: var(--mare); margin-top: 28px;">A Splash entrega</p>
+    <ul style="list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; font-size: 15px;">
+      <li style="display: flex; gap: 12px;"><svg class="icon" style="stroke: var(--mare);" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Site com código próprio, alterável sem medo.</li>
+      <li style="display: flex; gap: 12px;"><svg class="icon" style="stroke: var(--mare);" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Estrutura pensada pra busca desde a primeira linha.</li>
+      <li style="display: flex; gap: 12px;"><svg class="icon" style="stroke: var(--mare);" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Um sistema só seu, na língua da sua operação.</li>
+      <li style="display: flex; gap: 12px;"><svg class="icon" style="stroke: var(--mare);" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Relatório que se atualiza sozinho.</li>
+    </ul>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <div class="sec" id="servicos">
+    <p class="ref" style="color: var(--concreto);">SEC 02 — Serviços</p>
+    <h2 style="font-size: 27px; line-height: 1.14; font-weight: 700; margin-top: 12px;">Dois serviços. Nada de pacote fechado.</h2>
+    <div style="display: flex; flex-direction: column; gap: 1px; background: var(--linha); border: 1px solid var(--linha); margin-top: 24px;">
+      <div style="background: var(--papel); padding: 26px;">
+        <svg class="icon" style="stroke: var(--mare); width: 26px; height: 26px;" viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 9h18"/></svg>
+        <h3 style="font-size: 19px; font-weight: 700; margin-top: 14px;">Criação de Sites &amp; Landing Pages</h3>
+        <p style="font-size: 14.5px; color: var(--concreto); margin-top: 10px;">Site ou landing escrito à mão, rápido e pronto pra ser encontrado. Da estrutura ao texto, montado com você.</p>
+        <a href="#" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; min-height: 44px; font-weight: 600; font-size: 15px;">Ver como funciona <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div style="background: var(--papel); padding: 26px;">
+        <svg class="icon" style="stroke: var(--mare); width: 26px; height: 26px;" viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/></svg>
+        <h3 style="font-size: 19px; font-weight: 700; margin-top: 14px;">Sistemas sob Medida</h3>
+        <p style="font-size: 14.5px; color: var(--concreto); margin-top: 10px;">Software interno pro seu processo: ordens de serviço, agenda, estoque, relatórios. A partir de como você já trabalha.</p>
+        <a href="#" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; min-height: 44px; font-weight: 600; font-size: 15px;">Ver como funciona <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- POR TRÁS DO CÓDIGO -->
+  <div class="sec">
+    <p class="ref" style="color: var(--concreto);">SEC 03 — Bastidores</p>
+    <h2 style="font-size: 27px; line-height: 1.14; font-weight: 700; margin-top: 12px;">Três decisões que a gente não terceiriza.</h2>
+    <div style="display: flex; flex-direction: column; gap: 22px; margin-top: 24px;">
+      <div><p class="mono" style="font-size: 12px; color: var(--mare);">ESTRUTURA</p><h3 style="font-size: 17px; font-weight: 700; margin-top: 6px;">SEO começa no HTML, não num plugin</h3><p style="font-size: 14.5px; color: var(--concreto); margin-top: 6px;">Hierarquia, dados estruturados e URLs limpas definidos junto com o conteúdo.</p></div>
+      <div><p class="mono" style="font-size: 12px; color: var(--mare);">STACK</p><h3 style="font-size: 17px; font-weight: 700; margin-top: 6px;">A ferramenta é escolhida por projeto</h3><p style="font-size: 14.5px; color: var(--concreto); margin-top: 6px;">Escolhida pro seu caso e explicada em português.</p></div>
+      <div><p class="mono" style="font-size: 12px; color: var(--mare);">PERFORMANCE</p><h3 style="font-size: 17px; font-weight: 700; margin-top: 6px;">Rápido de verdade, não no papel</h3><div class="dim" style="margin-top: 12px;"><span>meta de first-paint</span><span class="rule"></span><span style="color: var(--tinta); font-weight: 600;">&lt; 1s</span></div></div>
+    </div>
+  </div>
+
+  <!-- PORTFÓLIO -->
+  <div class="sec">
+    <p class="ref" style="color: var(--concreto);">SEC 04 — Portfólio</p>
+    <h2 style="font-size: 27px; line-height: 1.14; font-weight: 700; margin-top: 12px;">Trabalhos recentes.</h2>
+    <div style="display: flex; flex-direction: column; gap: 1px; background: var(--linha); border: 1px solid var(--linha); margin-top: 22px;">
+      <div style="background: var(--papel);"><div style="aspect-ratio: 16/10; background: var(--bruma); display: flex; align-items: center; justify-content: center;"><span class="ref" style="color: var(--concreto);">[ ESPAÇO PARA CASE REAL ]</span></div><div style="padding: 20px;"><p class="ref" style="color: var(--concreto);">Setor · a definir</p><h3 style="font-size: 16px; font-weight: 700; margin-top: 6px;">Título do projeto</h3></div></div>
+      <div style="background: var(--papel);"><div style="aspect-ratio: 16/10; background: var(--bruma); display: flex; align-items: center; justify-content: center;"><span class="ref" style="color: var(--concreto);">[ ESPAÇO PARA CASE REAL ]</span></div><div style="padding: 20px;"><p class="ref" style="color: var(--concreto);">Setor · a definir</p><h3 style="font-size: 16px; font-weight: 700; margin-top: 6px;">Título do projeto</h3></div></div>
+    </div>
+    <div style="border: 1px solid var(--linha); border-top: none; background: var(--papel); padding: 20px;">
+      <p class="ref" style="color: var(--concreto);">[ ESPAÇO PARA DEPOIMENTO REAL ]</p>
+      <p style="font-size: 14px; margin-top: 6px;">Fala de um cliente real que a Splash atendeu — nome, empresa e o que mudou. Só com autorização.</p>
+    </div>
+  </div>
+
+  <!-- FUNDADORES -->
+  <div class="sec">
+    <p class="ref" style="color: var(--concreto);">SEC 05 — Quem atende</p>
+    <h2 style="font-size: 27px; line-height: 1.14; font-weight: 700; margin-top: 12px;">Você fala direto com quem escreve o código.</h2>
+    <p style="font-size: 15px; color: var(--concreto); margin-top: 14px;">A Splash são duas pessoas. Quem te atende na primeira conversa é quem entrega o projeto.</p>
+    <div style="display: flex; flex-direction: column; gap: 1px; background: var(--linha); border: 1px solid var(--linha); margin-top: 20px;">
+      <div style="background: var(--papel); padding: 22px; display: flex; gap: 16px;">
+        <div style="width: 52px; height: 52px; flex: none; background: var(--bruma); border: 1px solid var(--linha); display: flex; align-items: center; justify-content: center;"><span class="mono" style="font-size: 15px; color: var(--concreto);">BD</span></div>
+        <div><h3 style="font-size: 16px; font-weight: 700;">Bernardo Dornelles</h3><p class="ref" style="color: var(--concreto); margin-top: 2px;">Co-fundador</p><p style="font-size: 13.5px; margin-top: 8px;">Conversa inicial, arquitetura e código.</p></div>
+      </div>
+      <div style="background: var(--papel); padding: 22px; display: flex; gap: 16px;">
+        <div style="width: 52px; height: 52px; flex: none; background: var(--bruma); border: 1px solid var(--linha); display: flex; align-items: center; justify-content: center;"><span class="mono" style="font-size: 15px; color: var(--concreto);">SP</span></div>
+        <div><h3 style="font-size: 16px; font-weight: 700;">Selso Pacheco</h3><p class="ref" style="color: var(--concreto); margin-top: 2px;">Co-fundador</p><p style="font-size: 13.5px; margin-top: 8px;">Mapeamento do processo, entregas e acompanhamento.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="sec" style="position: relative; overflow: hidden;">
+    <svg viewBox="0 0 300 220" aria-hidden="true" style="position: absolute; left: 35%; top: 0; width: 240px; height: 180px; opacity: 0.75; pointer-events: none;"><defs><filter id="ink2" x="-30%" y="-30%" width="160%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="3" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="70" xChannelSelector="R" yChannelSelector="G"/><feGaussianBlur stdDeviation="1.2"/></filter><radialGradient id="drop2" cx="45%" cy="42%" r="55%"><stop offset="0%" stop-color="var(--respingo)" stop-opacity="0.5"/><stop offset="55%" stop-color="var(--mare)" stop-opacity="0.28"/><stop offset="100%" stop-color="var(--mare)" stop-opacity="0"/></radialGradient></defs><g filter="url(#ink2)"><circle cx="150" cy="110" r="90" fill="url(#drop2)"/></g></svg>
+    <div style="position: relative;">
+      <p class="ref" style="color: var(--concreto);">SEC 06 — Próximo passo</p>
+      <h2 style="font-size: 30px; line-height: 1.1; font-weight: 800; margin-top: 12px;">Manda uma mensagem contando o que você precisa.</h2>
+      <p style="font-size: 15px; color: var(--concreto); margin-top: 14px;">A gente responde com um plano, não com um orçamento genérico.</p>
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 22px;">
+        <a class="btn btn-primary" href="https://wa.me/5551982135882"><svg class="icon" style="stroke:#fff;" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg> Chamar no WhatsApp</a>
+        <a class="btn btn-ghost" href="mailto:contato@splashsistemas.com.br">Mandar e-mail</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="mfoot" style="border-top: 1px solid var(--linha-forte); background: var(--areia); padding: 40px 22px;">
+    <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -0.03em;">Splash Sistemas</span>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 22px;">
+      <div><p class="ref" style="color: var(--concreto);">Serviços</p><ul style="list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px;"><li><a href="#" style="color: var(--tinta);">Criação de Sites</a></li><li><a href="#" style="color: var(--tinta);">Landing Pages</a></li><li><a href="#" style="color: var(--tinta);">Sistemas sob Medida</a></li></ul></div>
+      <div><p class="ref" style="color: var(--concreto);">Conteúdo</p><ul style="list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px;"><li><a href="#" style="color: var(--tinta);">Blog</a></li><li><a href="#" style="color: var(--tinta);">Sobre</a></li><li><a href="#" style="color: var(--tinta);">Contato</a></li></ul></div>
+    </div>
+    <div style="margin-top: 24px;">
+      <p class="ref" style="color: var(--concreto);">Contato</p>
+      <ul style="list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px;">
+        <li><a href="https://wa.me/5551982135882" style="color: var(--tinta);">WhatsApp (51) 98213-5882</a></li>
+        <li><a href="mailto:contato@splashsistemas.com.br" style="color: var(--tinta);">contato@splashsistemas.com.br</a></li>
+        <li><a href="https://instagram.com/splash.sistemas" style="color: var(--tinta);">@splash.sistemas</a></li>
+      </ul>
+    </div>
+    <p style="font-size: 12px; color: var(--concreto); margin-top: 28px;">© 2026 Splash Sistemas</p>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"theme":{"editor":"enum","default":"claro","options":["claro","escuro"],"section":"Tema"}}'>
+class Component extends DCLogic {
+  renderVals() { return { theme: this.props.theme === "escuro" ? "dark" : "light" }; }
+}
+</script>
+</body>
+</html>

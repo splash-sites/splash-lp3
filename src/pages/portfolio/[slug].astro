@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Button from '../../components/Button.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { portfolio } from '../../data/portfolio';
+import { whatsappHref } from '../../consts';
+
+export function getStaticPaths() {
+  return portfolio.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+
+const { c } = Astro.props;
+const title = `${c.title} | Portfólio Splash Sistemas`;
+const description = c.summary.slice(0, 150);
+---
+<BaseLayout title={title} description={description} path={`/portfolio/${c.slug}`}>
+  <Breadcrumbs
+    items={[{ label: 'Portfólio', href: '/portfolio' }, { label: c.title }]}
+  />
+
+  <article class="mx-auto max-w-wrap px-6 py-12 md:pl-[88px] md:pr-10">
+    {
+      c.placeholder && (
+        <p class="mb-6 border border-linha bg-bruma px-4 py-3 font-mono text-[12px] uppercase tracking-ref text-concreto">
+          Case de exemplo. Conteúdo placeholder, nenhum dado abaixo é real.
+        </p>
+      )
+    }
+    <p class="ref text-mare">{c.sector} · {c.year}</p>
+    <h1 class="mt-3 max-w-[24ch] text-[36px] font-extrabold leading-[1.08] md:text-[46px]">
+      {c.title}
+    </h1>
+    <p class="mt-3 font-mono text-[13px] uppercase tracking-ref text-concreto">
+      Cliente: {c.client} · Serviço:
+      <a class="text-mare" href={c.serviceHref}>{c.service}</a>
+    </p>
+
+    <Image
+      src={c.cover}
+      alt={c.coverAlt}
+      width={1120}
+      height={630}
+      loading="eager"
+      class="mt-8 aspect-[16/9] w-full border border-linha object-cover"
+    />
+
+    <div class="prose mt-12">
+      <h2>O problema</h2>
+      <p>{c.problem}</p>
+      <h2>O que foi feito</h2>
+      <p>{c.solution}</p>
+      <h2>Resultado</h2>
+      <p>{c.result}</p>
+      {
+        c.link && (
+          <p>
+            <a href={c.link} target="_blank" rel="noopener noreferrer">
+              Ver o projeto no ar
+            </a>
+          </p>
+        )
+      }
+    </div>
+
+    <div class="mt-10">
+      <Button href={whatsappHref} icon="whatsapp" external>Quero um projeto assim</Button>
+    </div>
+  </article>
+
+  <CtaBand />
+</BaseLayout>

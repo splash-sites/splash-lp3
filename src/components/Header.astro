@@ -1,0 +1,118 @@
+---
+import { NAV, whatsappHref } from '../consts';
+import Icon from './Icon.astro';
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
+---
+<header class="sticky top-0 z-50 border-b border-linha bg-areia/90 backdrop-blur">
+  <div class="mx-auto flex max-w-wrap items-center justify-between gap-8 px-6 py-4 md:px-10">
+    <a href="/" class="flex items-baseline gap-3" aria-label="Splash Sistemas, página inicial">
+      <span class="font-display text-[22px] font-extrabold tracking-[-0.03em] text-tinta">Splash</span>
+      <span class="ref">Sistemas</span>
+    </a>
+
+    <!-- Navegação desktop -->
+    <nav class="hidden items-center gap-7 md:flex" aria-label="Navegação principal">
+      {
+        NAV.map((item) =>
+          item.children ? (
+            <div class="group relative">
+              <a
+                href={item.href}
+                class="flex items-center gap-1 py-2 text-[15px] font-medium text-tinta"
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+                <Icon name="chevron-down" size={16} />
+              </a>
+              <ul
+                class="invisible absolute left-0 top-full min-w-[240px] border border-linha bg-papel opacity-0 shadow-lg transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100"
+              >
+                {item.children.map((c) => (
+                  <li>
+                    <a
+                      href={c.href}
+                      class="block px-4 py-3 text-[14px] text-tinta hover:bg-bruma"
+                      aria-current={isActive(c.href) ? 'page' : undefined}
+                    >
+                      {c.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              class="py-2 text-[15px] font-medium text-tinta"
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ),
+        )
+      }
+      <a
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 border border-mare bg-mare px-4 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-mare-forte"
+      >
+        <Icon name="whatsapp" size={18} />
+        Falar no WhatsApp
+      </a>
+    </nav>
+
+    <!-- Navegação mobile: <details> nativo, sem JavaScript -->
+    <details class="group relative md:hidden">
+      <summary
+        class="flex h-11 w-11 cursor-pointer list-none items-center justify-center border border-linha bg-papel [&::-webkit-details-marker]:hidden"
+        aria-label="Abrir menu"
+      >
+        <Icon name="menu" size={22} />
+      </summary>
+      <nav
+        class="absolute right-0 top-[calc(100%+8px)] w-[280px] border border-linha bg-papel p-2 shadow-xl"
+        aria-label="Navegação principal"
+      >
+        {
+          NAV.map((item) => (
+            <>
+              <a
+                href={item.href}
+                class="flex min-h-[44px] items-center px-3 text-[15px] font-medium text-tinta hover:bg-bruma"
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+              {item.children && (
+                <div class="mb-1 ml-3 border-l border-linha pl-3">
+                  {item.children.map((c) => (
+                    <a
+                      href={c.href}
+                      class="flex min-h-[44px] items-center px-3 text-[14px] text-concreto hover:bg-bruma"
+                      aria-current={isActive(c.href) ? 'page' : undefined}
+                    >
+                      {c.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </>
+          ))
+        }
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-2 flex min-h-[48px] items-center justify-center gap-2 border border-mare bg-mare px-4 font-semibold text-white"
+        >
+          <Icon name="whatsapp" size={18} />
+          Falar no WhatsApp
+        </a>
+      </nav>
+    </details>
+  </div>
+</header>

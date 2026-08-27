@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServicePage from '../components/ServicePage.astro';
+import { serviceBySlug } from '../data/services';
+
+const service = serviceBySlug['criacao-de-sites'];
+---
+<BaseLayout
+  title={service.title}
+  description={service.metaDescription}
+  path={`/${service.slug}`}
+>
+  <ServicePage service={service} />
+</BaseLayout>

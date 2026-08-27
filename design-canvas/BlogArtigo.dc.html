@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: #F2F4F8; }
+    .page {
+      --tinta: #0E1420; --mare: oklch(56% 0.19 258); --mare-forte: oklch(46% 0.19 258); --respingo: oklch(72% 0.15 252);
+      --concreto: #5A6070; --bruma: #DFE3EC; --areia: #F2F4F8; --papel: #FFFFFF;
+      --linha: rgba(14, 20, 32, 0.14); --linha-forte: rgba(14, 20, 32, 0.32);
+      font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; color: var(--tinta);
+      background: var(--areia); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+      width: 1440px; min-height: 100%; overflow: hidden;
+    }
+    .page[data-theme="dark"] {
+      --tinta: #E9ECF4; --mare: oklch(72% 0.15 258); --mare-forte: oklch(80% 0.13 258); --respingo: oklch(78% 0.13 252);
+      --concreto: #8A92A6; --bruma: #1E2636; --areia: #0E1420; --papel: #171E2C;
+      --linha: rgba(233, 236, 244, 0.16); --linha-forte: rgba(233, 236, 244, 0.34);
+    }
+    .page a { color: var(--mare); text-decoration: none; }
+    .page a:hover { color: var(--mare-forte); }
+    h1, h2, h3, h4 { font-family: 'Bricolage Grotesque', 'Archivo', sans-serif; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+    p { margin: 0; }
+    .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+    .ref { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--concreto); }
+    .wrap { width: 1200px; margin: 0 auto; padding-left: 64px; position: relative; }
+    .measure { position: absolute; left: 0; top: 6px; width: 64px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+    .measure .tick { width: 22px; height: 1px; background: var(--linha-forte); }
+    .measure .ref { writing-mode: vertical-rl; transform: rotate(180deg); margin-top: 6px; white-space: nowrap; }
+    .icon { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.6; }
+    .prose { max-width: 65ch; }
+    .prose p { margin-top: 20px; font-size: 18px; line-height: 1.72; }
+    .prose h2 { font-size: 26px; font-weight: 700; margin-top: 48px; }
+    .prose ul { margin-top: 20px; padding-left: 22px; }
+    .prose li { margin-top: 10px; font-size: 18px; line-height: 1.7; }
+    .prose blockquote { margin: 32px 0 0; padding-left: 22px; border-left: 2px solid var(--mare); font-size: 20px; line-height: 1.55; color: var(--tinta); }
+    .toc a { display: block; padding: 7px 0; font-size: 14px; color: var(--concreto); border-bottom: 1px solid var(--linha); }
+    .toc a:hover { color: var(--mare); }
+  </style>
+</helmet>
+
+<div class="page" data-theme="{{theme}}">
+
+  <div style="border-bottom: 1px solid var(--linha); background: var(--areia);">
+    <div class="wrap" style="padding: 22px 0; display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.03em;">Splash</span>
+        <span class="ref">Sistemas</span>
+      </div>
+      <nav style="display: flex; align-items: center; gap: 30px; font-size: 15px; font-weight: 500;">
+        <a href="#" style="color: var(--tinta);">Serviços</a>
+        <a href="#" style="color: var(--tinta);">Portfólio</a>
+        <a href="#" style="color: var(--mare);">Blog</a>
+        <a href="#" style="color: var(--tinta);">Sobre</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- CABEÇALHO DO ARTIGO -->
+  <div class="wrap" style="padding: 56px 0 40px;">
+    <div class="measure"><span class="tick"></span><span class="ref">Blog · artigo</span></div>
+    <p class="ref" style="margin-bottom: 16px;"><a href="#" style="color: var(--concreto);">Blog</a> / SEO local</p>
+    <h1 style="font-size: 46px; line-height: 1.1; font-weight: 800; max-width: 24ch;">
+      SEO local: como aparecer pra quem busca “perto de mim”
+    </h1>
+    <div style="display: flex; gap: 24px; align-items: center; margin-top: 24px; font-size: 14px; color: var(--concreto);" class="mono">
+      <span>18 AGO 2026</span><span>·</span><span>6 MIN DE LEITURA</span><span>·</span><span>POR BERNARDO DORNELLES</span>
+    </div>
+  </div>
+
+  <!-- CORPO: SUMÁRIO + PROSA -->
+  <div class="wrap" style="padding-bottom: 64px; display: grid; grid-template-columns: 220px 1fr; gap: 64px; align-items: start;">
+    <aside class="toc" style="position: sticky; top: 24px;">
+      <p class="ref" style="color: var(--tinta); border-bottom: 1px solid var(--linha-forte); padding-bottom: 8px;">Sumário</p>
+      <a href="#s1">1. O básico que quase todo mundo pula</a>
+      <a href="#s2">2. Um nome, escrito igual em todo lugar</a>
+      <a href="#s3">3. Uma página por serviço e por região</a>
+      <a href="#s4">4. Avaliações: como pedir sem forçar</a>
+      <a href="#s5">5. O que é perda de tempo</a>
+    </aside>
+
+    <article class="prose">
+      <p style="font-size: 20px; color: var(--concreto);">
+        Se o seu negócio atende uma cidade ou uma região, a maior parte da sua concorrência por busca
+        não é nacional — é a rua de cima. Este texto é sobre o que move o ponteiro nesse jogo, na
+        ordem em que vale fazer.
+      </p>
+
+      <h2 id="s1">1. O básico que quase todo mundo pula</h2>
+      <p>
+        Antes de pensar em blog, em palavra-chave ou em anúncio, três coisas precisam estar de pé: a
+        ficha da empresa no Google preenchida até o fim, o site abrindo rápido no celular e cada
+        página dizendo com clareza o que você faz e onde. Parece óbvio, mas é onde a maioria dos
+        sites de negócio local perde posição sem perceber.
+      </p>
+      <p>
+        A ficha do Google (o quadro que aparece à direita quando alguém busca o nome da empresa) é
+        gratuita e costuma trazer mais visita do que a primeira página do site. Categoria certa,
+        horário de verdade, fotos reais do lugar e telefone que alguém atende.
+      </p>
+
+      <h2 id="s2">2. Um nome, escrito igual em todo lugar</h2>
+      <p>
+        O Google cruza a informação da sua empresa entre várias fontes: o site, a ficha, redes
+        sociais, listas de comércio local. Quando o nome, o endereço e o telefone aparecem escritos
+        de formas diferentes — “Rua XV” num lugar, “R. Quinze” em outro —, ele fica menos seguro de
+        que é o mesmo negócio, e isso pesa contra.
+      </p>
+      <blockquote>
+        A regra é chata e simples: escolha uma forma de escrever nome, endereço e telefone, e repita
+        exatamente essa forma em todo canto.
+      </blockquote>
+
+      <h2 id="s3">3. Uma página por serviço e por região</h2>
+      <p>
+        Uma página só, tentando falar de tudo, compete mal. Quem busca “conserto de placa perto de
+        mim” e cai numa home genérica sai. Uma página dedicada, com o serviço no título, exemplos
+        reais e as áreas atendidas escritas no texto, responde à busca de forma direta — e é isso
+        que o Google tenta entregar.
+      </p>
+      <ul>
+        <li>Uma página por serviço principal, com o termo que as pessoas realmente digitam.</li>
+        <li>Se você atende bairros ou cidades vizinhas, cite-os no conteúdo, sem encher linguiça.</li>
+        <li>Link entre essas páginas e a home, pra elas não ficarem ilhadas.</li>
+      </ul>
+
+      <!-- CTA DISCRETO PRO SERVIÇO -->
+      <div style="border: 1px solid var(--linha); background: var(--papel); padding: 24px; margin-top: 40px; display: flex; gap: 18px; align-items: center;">
+        <svg class="icon" style="stroke: var(--mare); width: 26px; height: 26px;" viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 9h18"/></svg>
+        <div style="flex: 1;">
+          <p style="font-size: 15px; font-weight: 600;">A Splash monta essa estrutura de páginas por serviço junto com o texto.</p>
+          <p style="font-size: 14px; color: var(--concreto); margin-top: 4px;">Serviço de Criação de Sites — arquitetura de conteúdo e SEO na base.</p>
+        </div>
+        <a href="#" style="font-weight: 600; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;">Ver o serviço <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+      <h2 id="s4">4. Avaliações: como pedir sem forçar</h2>
+      <p>
+        Avaliação recente e respondida conta. Não precisa de campanha: peça a quem você acabou de
+        atender bem, mande o link direto da ficha, e responda todas — inclusive as ruins, de forma
+        curta e sem briga. Volume ajuda, mas constância ajuda mais.
+      </p>
+
+      <h2 id="s5">5. O que é perda de tempo</h2>
+      <p>
+        Encher o rodapé com cinquenta nomes de cidade, esconder texto da mesma cor do fundo, comprar
+        pacote de links, publicar texto genérico gerado às pressas. Nada disso resiste às
+        atualizações do Google faz tempo, e parte pode derrubar o site de vez.
+      </p>
+      <p>
+        Se o básico está de pé e as páginas estão organizadas, o resto é manutenção: manter a ficha
+        viva, publicar quando tiver algo real a dizer, e ajustar as páginas conforme você aprende o
+        que as pessoas procuram.
+      </p>
+    </article>
+  </div>
+
+  <!-- RELACIONADOS -->
+  <div style="border-top: 1px solid var(--linha-forte); background: var(--areia);">
+    <div class="wrap" style="padding: 56px 0 72px;">
+      <p class="ref" style="color: var(--mare);">Continue lendo</p>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--linha); border: 1px solid var(--linha); margin-top: 24px;">
+        <a href="#" style="background: var(--papel); padding: 28px;"><p class="ref" style="color: var(--concreto);">Performance</p><h3 style="font-size: 18px; font-weight: 700; margin-top: 10px; color: var(--tinta);">First-paint abaixo de 1s: o que a gente corta</h3></a>
+        <a href="#" style="background: var(--papel); padding: 28px;"><p class="ref" style="color: var(--concreto);">Negócio local</p><h3 style="font-size: 18px; font-weight: 700; margin-top: 10px; color: var(--tinta);">Site de negócio sazonal: o que muda quando o movimento é concentrado</h3></a>
+        <a href="#" style="background: var(--papel); padding: 28px;"><p class="ref" style="color: var(--concreto);">Processo</p><h3 style="font-size: 18px; font-weight: 700; margin-top: 10px; color: var(--tinta);">Escopo fechado: por que a gente não cobra por hora</h3></a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"theme":{"editor":"enum","default":"claro","options":["claro","escuro"],"section":"Tema"}}'>
+class Component extends DCLogic {
+  renderVals() { return { theme: this.props.theme === "escuro" ? "dark" : "light" }; }
+}
+</script>
+</body>
+</html>

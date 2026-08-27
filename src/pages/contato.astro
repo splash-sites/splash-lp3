@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import { CONTACT } from '../consts';
+
+const title = 'Contato | Splash Sistemas';
+const description =
+  'Fale com a Splash pelo WhatsApp (51) 98213-5882, por e-mail ou pelo formulário. Resposta no mesmo dia útil.';
+---
+<BaseLayout title={title} description={description} path="/contato">
+  <Breadcrumbs items={[{ label: 'Contato' }]} />
+
+  <div class="mx-auto max-w-wrap px-6 pb-10 pt-8 md:pl-[88px] md:pr-10">
+    <p class="ref mb-4 text-mare">Fale com a Splash</p>
+    <h1 class="max-w-[20ch] text-[36px] font-extrabold leading-[1.06] md:text-[50px]">
+      O jeito mais rápido é o WhatsApp. A gente costuma responder no mesmo dia.
+    </h1>
+  </div>
+
+  <div
+    class="mx-auto grid max-w-wrap gap-14 px-6 pb-24 md:grid-cols-2 md:pl-[88px] md:pr-10"
+  >
+    <!-- CANAIS -->
+    <div class="flex flex-col gap-px border border-linha bg-linha">
+      <a
+        href={CONTACT.whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-5 bg-mare p-8 text-white"
+      >
+        <Icon name="whatsapp" size={34} />
+        <span>
+          <span class="block font-display text-[20px] font-bold">{CONTACT.whatsappDisplay}</span>
+          <span class="block text-[13px] opacity-90">Toca aqui para abrir a conversa</span>
+        </span>
+      </a>
+      <a
+        href={`mailto:${CONTACT.email}`}
+        class="flex items-center gap-5 bg-papel p-7 text-tinta"
+      >
+        <span class="text-mare"><Icon name="mail" size={22} /></span>
+        <span>
+          <span class="block font-semibold">{CONTACT.email}</span>
+          <span class="ref">Para briefing mais longo ou anexos</span>
+        </span>
+      </a>
+      <a
+        href={CONTACT.instagramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-5 bg-papel p-7 text-tinta"
+      >
+        <span class="text-mare"><Icon name="instagram" size={22} /></span>
+        <span>
+          <span class="block font-semibold">{CONTACT.instagramHandle}</span>
+          <span class="ref">Projetos recentes e bastidores</span>
+        </span>
+      </a>
+      <div class="flex items-start gap-5 bg-papel p-7">
+        <span class="text-mare"><Icon name="clock" size={22} /></span>
+        <div>
+          <p class="font-semibold">{CONTACT.hours}</p>
+          <p class="mt-1 text-[14px] text-concreto">
+            Atendimento presencial combinado ou por chamada de vídeo. Base em {CONTACT.addressLocality}, {CONTACT.addressRegion}.
+          </p>
+          {/* TODO: incluir [ENDEREÇO] exato se passarem a atender presencialmente em endereço fixo. */}
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <form
+      class="border border-linha bg-papel p-9"
+      name="contato"
+      method="POST"
+      action="/contato"
+    >
+      {/* TODO: ligar o envio a um endpoint real (Formspree, Netlify Forms, função serverless, etc.). */}
+      <h2 class="text-[22px] font-bold">Ou deixa os dados aqui</h2>
+      <p class="mt-2 text-[14px] text-concreto">
+        Três campos. A gente volta para você pelo canal que preferir.
+      </p>
+      <div class="mt-7 flex flex-col gap-5">
+        <p class="flex flex-col gap-2">
+          <label class="ref" for="nome">Seu nome</label>
+          <input
+            id="nome"
+            name="nome"
+            type="text"
+            autocomplete="name"
+            required
+            class="border border-linha bg-papel px-3.5 py-3 text-[15px] text-tinta"
+            placeholder="Como podemos te chamar"
+          />
+        </p>
+        <p class="flex flex-col gap-2">
+          <label class="ref" for="contato-campo">WhatsApp ou e-mail</label>
+          <input
+            id="contato-campo"
+            name="contato"
+            type="text"
+            required
+            class="border border-linha bg-papel px-3.5 py-3 text-[15px] text-tinta"
+            placeholder="(51) 9…  ·  nome@empresa.com.br"
+          />
+        </p>
+        <p class="flex flex-col gap-2">
+          <label class="ref" for="tipo">Tipo de projeto</label>
+          <select
+            id="tipo"
+            name="tipo"
+            class="border border-linha bg-papel px-3.5 py-3 text-[15px] text-tinta"
+          >
+            <option>Ainda não sei, quero conversar</option>
+            <option>Site institucional</option>
+            <option>Landing page de campanha</option>
+            <option>Sistema sob medida</option>
+            <option>Mexer num site que já existe</option>
+          </select>
+        </p>
+        <p class="flex flex-col gap-2">
+          <label class="ref" for="mensagem">O que você precisa</label>
+          <textarea
+            id="mensagem"
+            name="mensagem"
+            rows="4"
+            class="border border-linha bg-papel px-3.5 py-3 text-[15px] text-tinta"
+            placeholder="Conta em duas linhas o que a sua empresa faz e o que está travando."
+          ></textarea>
+        </p>
+        <button
+          type="submit"
+          class="inline-flex items-center justify-center gap-2.5 border border-mare bg-mare px-4 py-4 font-sans text-[16px] font-semibold text-white"
+        >
+          Enviar mensagem <Icon name="arrow-right" size={20} />
+        </button>
+        <p class="ref">Seus dados vão só para a Splash, para responder este contato.</p>
+      </div>
+    </form>
+  </div>
+</BaseLayout>

@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import SplashMark from '../components/SplashMark.astro';
+import FoundersSection from '../components/FoundersSection.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { whatsappHref } from '../consts';
+
+const title = 'Criação de sites e sistemas sob medida | Splash Sistemas';
+const description =
+  'Estúdio que desenha cada site e cada sistema do zero para o processo real da sua empresa. Sem template, sem gambiarra. Fale no WhatsApp.';
+
+const travas = [
+  'O site foi feito num construtor e trava para mudar qualquer coisa sem quebrar outra.',
+  'Ninguém acha a sua empresa no Google, às vezes nem pelo nome certo.',
+  'Orçamento, agenda e estoque vivem espalhados em planilhas soltas e no WhatsApp.',
+  'Você refaz o mesmo relatório toda semana, na mão, copiando de um lugar para o outro.',
+  'O sistema que te venderam faz 200 coisas e nenhuma exatamente do seu jeito.',
+];
+const entregas = [
+  'Site com código próprio, que você (ou a gente) altera sem medo de derrubar o resto.',
+  'Estrutura pensada para busca desde a primeira linha, não um plugin de SEO no fim.',
+  'Um sistema só seu, que fala a língua da sua operação e nada além disso.',
+  'Relatório que se atualiza sozinho, pronto quando você abre.',
+  'Menos aba aberta, menos retrabalho, menos "depois eu resolvo isso".',
+];
+---
+<BaseLayout title={title} description={description} path="/">
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <SplashMark
+      variant="hero"
+      class="pointer-events-none absolute right-[-80px] top-[-40px] h-[620px] w-[760px] opacity-90"
+    />
+    <div class="relative mx-auto max-w-wrap px-6 pb-20 pt-16 md:pb-28 md:pl-[88px] md:pr-10 md:pt-24">
+      <div class="measure"><span class="tick"></span><span class="ref">SEC 00 · Posicionamento</span></div>
+      <p class="font-mono text-[12px] uppercase tracking-[0.1em] text-mare">
+        Estúdio de sites e sistemas sob medida
+      </p>
+      <h1 class="mt-5 max-w-[20ch] text-[44px] font-extrabold leading-[1.03] md:text-[74px]">
+        Criação de sites e sistemas sob medida para o seu processo real.
+      </h1>
+      <p class="mt-7 max-w-[62ch] text-[20px] leading-snug">
+        Cada projeto é desenhado do zero. Sites que convertem e aparecem no Google; sistemas que
+        cortam o trabalho manual da sua operação. Sem template, sem gambiarra.
+      </p>
+      <div class="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+        <Button href={whatsappHref} icon="whatsapp" external>Chamar no WhatsApp</Button>
+        <Button href="#servicos" variant="ghost" icon="arrow-right" iconAfter>
+          Ver os serviços
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMA x SOLUÇÃO -->
+  <Section refLabel="SEC 01 · Diagnóstico">
+    <h2 class="max-w-[20ch] text-[32px] font-bold leading-[1.1] md:text-[40px]">
+      O que trava você hoje, e o que a gente entrega no lugar.
+    </h2>
+    <div class="mt-12 grid gap-10 md:grid-cols-2">
+      <div>
+        <p class="ref mb-5">Trava hoje</p>
+        <ul class="flex flex-col gap-[18px]">
+          {
+            travas.map((t) => (
+              <li class="flex gap-3.5">
+                <span class="mt-0.5 shrink-0 text-concreto"><Icon name="x" size={22} /></span>
+                <span>{t}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="border-linha md:border-l md:pl-10">
+        <p class="ref mb-5 text-mare">A Splash entrega</p>
+        <ul class="flex flex-col gap-[18px]">
+          {
+            entregas.map((t) => (
+              <li class="flex gap-3.5">
+                <span class="mt-0.5 shrink-0 text-mare"><Icon name="check" size={22} /></span>
+                <span>{t}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </Section>
+
+  <!-- SERVIÇOS -->
+  <Section refLabel="SEC 02 · Serviços" id="servicos">
+    <h2 class="text-[32px] font-bold leading-[1.1] md:text-[40px]">
+      Dois caminhos. Nada de pacote fechado.
+    </h2>
+    <p class="mt-4 max-w-[62ch] text-[20px] leading-snug">
+      Você contrata um, ou os dois. O escopo é escrito junto com você antes de começar.
+    </p>
+    <div class="mt-11 grid gap-px border border-linha bg-linha md:grid-cols-2">
+      <div class="bg-papel p-10">
+        <span class="text-mare"><Icon name="browser" size={30} /></span>
+        <h3 class="mt-5 text-[24px] font-bold">Criação de sites &amp; landing pages</h3>
+        <p class="mt-3.5">
+          Site institucional ou página de campanha, escrito à mão, rápido e pronto para ser
+          encontrado. Da estrutura de conteúdo ao texto, a gente monta com você.
+        </p>
+        <ul class="mt-5 flex flex-col gap-3 text-[15.5px]">
+          <li class="flex gap-3">
+            <span class="text-mare"><Icon name="check" size={18} /></span>
+            <a href="/criacao-de-sites">Criação de sites profissionais</a>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-mare"><Icon name="check" size={18} /></span>
+            <a href="/landing-pages">Landing pages de campanha</a>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-mare"><Icon name="check" size={18} /></span>
+            <a href="/sites-institucionais">Sites institucionais</a>
+          </li>
+        </ul>
+        <a
+          href="/criacao-de-sites"
+          class="mt-6 inline-flex items-center gap-2 font-semibold"
+        >
+          Ver o serviço <Icon name="arrow-right" size={18} />
+        </a>
+      </div>
+      <div class="bg-papel p-10">
+        <span class="text-mare"><Icon name="brackets" size={30} /></span>
+        <h3 class="mt-5 text-[24px] font-bold">Sistemas sob medida</h3>
+        <p class="mt-3.5">
+          Software interno para o seu processo: ordens de serviço, agenda, estoque, orçamento,
+          relatórios. Feito a partir de como você já trabalha, não de um modelo genérico.
+        </p>
+        <ul class="mt-5 flex flex-col gap-3 text-[15.5px]">
+          <li class="flex gap-3">
+            <span class="text-mare"><Icon name="check" size={18} /></span>
+            Mapa do processo antes de qualquer linha de código
+          </li>
+          <li class="flex gap-3">
+            <span class="text-mare"><Icon name="check" size={18} /></span>
+            Entregas em partes, cada uma já usável no dia a dia
+          </li>
+          <li class="flex gap-3">
+            <span class="text-mare"><Icon name="check" size={18} /></span>
+            Acesso ao código e aos dados: o sistema é seu
+          </li>
+        </ul>
+        <a
+          href="/sistemas-sob-medida"
+          class="mt-6 inline-flex items-center gap-2 font-semibold"
+        >
+          Ver o serviço <Icon name="arrow-right" size={18} />
+        </a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- POR TRÁS DO CÓDIGO -->
+  <Section refLabel="SEC 03 · Bastidores">
+    <h2 class="max-w-[18ch] text-[32px] font-bold leading-[1.1] md:text-[40px]">
+      Por trás do código, três decisões que a gente não terceiriza.
+    </h2>
+    <div class="mt-12 grid gap-10 md:grid-cols-3">
+      <div>
+        <p class="font-mono text-[12.5px] tracking-[0.06em] text-mare">ESTRUTURA</p>
+        <h3 class="mt-3 text-[20px] font-bold">SEO começa no HTML, não num plugin</h3>
+        <p class="mt-3 text-[15.5px] text-tinta">
+          Títulos, hierarquia, dados estruturados e URLs limpas são definidos junto com o
+          conteúdo. Quando o site sobe, o Google já entende do que ele trata.
+        </p>
+      </div>
+      <div>
+        <p class="font-mono text-[12.5px] tracking-[0.06em] text-mare">STACK</p>
+        <h3 class="mt-3 text-[20px] font-bold">A ferramenta é escolhida por projeto</h3>
+        <p class="mt-3 text-[15.5px] text-tinta">
+          Um site de cinco páginas e um sistema de ordens de serviço não pedem a mesma base. A
+          gente escolhe o que cabe no seu caso e explica o porquê, em português.
+        </p>
+      </div>
+      <div>
+        <p class="font-mono text-[12.5px] tracking-[0.06em] text-mare">PERFORMANCE</p>
+        <h3 class="mt-3 text-[20px] font-bold">Rápido de verdade, não no papel</h3>
+        <p class="mt-3 text-[15.5px] text-tinta">
+          Imagens no tamanho certo, pouco JavaScript e uma meta clara de carga, conferida em
+          celular comum.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- PORTFÓLIO -->
+  <Section refLabel="SEC 04 · Portfólio">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <h2 class="max-w-[16ch] text-[32px] font-bold leading-[1.1] md:text-[40px]">
+        Trabalhos recentes.
+      </h2>
+      <p class="ref max-w-[34ch] md:text-right">
+        Cada case vai mostrar o setor, o que foi construído e o resultado combinado com o cliente.
+      </p>
+    </div>
+    {/* TODO: substituir por [CASES REAIS]. Enquanto isso, os cartões abaixo são placeholder. */}
+    <div class="mt-10 grid gap-px border border-linha bg-linha md:grid-cols-3">
+      {
+        [1, 2, 3].map(() => (
+          <div class="bg-papel">
+            <div class="flex aspect-[4/3] items-center justify-center border-b border-linha bg-bruma">
+              <span class="ref">[ ESPAÇO PARA CASE REAL ]</span>
+            </div>
+            <div class="p-6">
+              <p class="ref">Setor · a definir</p>
+              <h3 class="mt-2 text-[18px] font-bold">Título do projeto</h3>
+              <p class="mt-2 text-[14.5px] text-concreto">O que foi feito e por quê, em duas linhas.</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <div class="flex items-start gap-5 border border-t-0 border-linha bg-papel p-7">
+      <span class="text-concreto"><Icon name="search" size={22} /></span>
+      <div>
+        <p class="ref">[ ESPAÇO PARA DEPOIMENTO REAL ]</p>
+        <p class="mt-2 max-w-[70ch]">
+          Aqui entra a fala de um cliente que a Splash atendeu: nome, empresa e o que mudou depois
+          do projeto. Nada será publicado sem a autorização dele.
+        </p>
+      </div>
+    </div>
+    <a href="/portfolio" class="mt-6 inline-flex items-center gap-2 font-semibold">
+      Ver o portfólio <Icon name="arrow-right" size={18} />
+    </a>
+  </Section>
+
+  <!-- FUNDADORES -->
+  <Section refLabel="SEC 05 · Quem atende">
+    <h2 class="max-w-[20ch] text-[32px] font-bold leading-[1.1] md:text-[40px]">
+      Você fala direto com quem escreve o código.
+    </h2>
+    <p class="mt-4 max-w-[62ch] text-[20px] leading-snug">
+      A Splash são duas pessoas. Sem time de vendas no meio, sem "vou passar para o time
+      responsável". Quem te atende na primeira conversa é quem entrega o projeto.
+    </p>
+    <FoundersSection variant="compact" />
+    <a href="/sobre" class="mt-6 inline-flex items-center gap-2 font-semibold">
+      Conhecer a Splash <Icon name="arrow-right" size={18} />
+    </a>
+  </Section>
+
+  <CtaBand />
+</BaseLayout>

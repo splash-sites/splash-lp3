@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: #F2F4F8; }
+    .page {
+      --tinta: #0E1420; --mare: oklch(56% 0.19 258); --mare-forte: oklch(46% 0.19 258); --respingo: oklch(72% 0.15 252);
+      --concreto: #5A6070; --bruma: #DFE3EC; --areia: #F2F4F8; --papel: #FFFFFF;
+      --linha: rgba(14, 20, 32, 0.14); --linha-forte: rgba(14, 20, 32, 0.32);
+      font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; color: var(--tinta);
+      background: var(--areia); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+      width: 1440px; min-height: 100%; overflow: hidden;
+    }
+    .page[data-theme="dark"] {
+      --tinta: #E9ECF4; --mare: oklch(72% 0.15 258); --mare-forte: oklch(80% 0.13 258); --respingo: oklch(78% 0.13 252);
+      --concreto: #8A92A6; --bruma: #1E2636; --areia: #0E1420; --papel: #171E2C;
+      --linha: rgba(233, 236, 244, 0.16); --linha-forte: rgba(233, 236, 244, 0.34);
+    }
+    .page a { color: var(--mare); text-decoration: none; }
+    .page a:hover { color: var(--mare-forte); }
+    h1, h2, h3, h4 { font-family: 'Bricolage Grotesque', 'Archivo', sans-serif; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+    p { margin: 0; }
+    .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+    .ref { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--concreto); }
+    .wrap { width: 1200px; margin: 0 auto; padding-left: 64px; position: relative; }
+    .measure { position: absolute; left: 0; top: 6px; width: 64px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+    .measure .tick { width: 22px; height: 1px; background: var(--linha-forte); }
+    .measure .ref { writing-mode: vertical-rl; transform: rotate(180deg); margin-top: 6px; white-space: nowrap; }
+    .section { padding: 96px 0; border-top: 1px solid var(--linha); }
+    .icon { width: 22px; height: 22px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.6; }
+    .lede { font-size: 20px; line-height: 1.55; max-width: 60ch; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; padding: 15px 24px; border: 1px solid var(--mare); background: var(--mare); color: #fff; text-decoration: none; }
+    .btn:hover { background: var(--mare-forte); color: #fff; }
+    .dim { display: flex; align-items: center; gap: 10px; color: var(--concreto); font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; }
+    .dim .rule { height: 1px; background: var(--mare); flex: 1 1 60px; position: relative; }
+    .dim .rule::before, .dim .rule::after { content: ""; position: absolute; top: -3px; width: 1px; height: 7px; background: var(--mare); }
+    .dim .rule::before { left: 0; } .dim .rule::after { right: 0; }
+  </style>
+</helmet>
+
+<div class="page" data-theme="{{theme}}">
+
+  <div style="border-bottom: 1px solid var(--linha); background: var(--areia);">
+    <div class="wrap" style="padding: 22px 0; display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.03em;">Splash</span>
+        <span class="ref">Sistemas</span>
+      </div>
+      <nav style="display: flex; align-items: center; gap: 30px; font-size: 15px; font-weight: 500;">
+        <a href="#" style="color: var(--tinta);">Serviços</a>
+        <a href="#" style="color: var(--tinta);">Portfólio</a>
+        <a href="#" style="color: var(--tinta);">Blog</a>
+        <a href="#" style="color: var(--mare);">Sobre</a>
+        <a class="btn" href="https://wa.me/5551982135882" style="padding: 12px 18px; font-size: 15px;"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg> Falar no WhatsApp</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="background: var(--areia); border-bottom: 1px solid var(--linha);">
+    <div class="wrap" style="padding: 76px 0 84px;">
+      <div class="measure"><span class="tick"></span><span class="ref">Sobre a Splash</span></div>
+      <p class="ref" style="color: var(--mare); margin-bottom: 18px;">Estúdio de software sob medida</p>
+      <h1 style="font-size: 56px; line-height: 1.06; font-weight: 800; max-width: 20ch;">
+        A Splash são duas pessoas que escrevem o código e atendem você.
+      </h1>
+      <p class="lede" style="margin-top: 22px;">
+        Sem equipe de vendas, sem terceirização, sem intermediário entre a sua ideia e quem programa.
+      </p>
+    </div>
+  </div>
+
+  <!-- HISTÓRIA CURTA -->
+  <div class="section">
+    <div class="wrap">
+      <div class="measure"><span class="tick"></span><span class="ref">Como começou</span></div>
+      <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px;">
+        <h2 style="font-size: 34px; line-height: 1.14; font-weight: 700;">Cansados de ver negócio bom preso em ferramenta ruim.</h2>
+        <div style="display: flex; flex-direction: column; gap: 18px; font-size: 16.5px; color: var(--tinta);">
+          <p>O Bernardo e o Selso já trabalhavam com desenvolvimento quando começaram a pegar, juntos, sempre o mesmo tipo de pedido: comércios com site que ninguém achava, empresas refazendo o mesmo controle em três planilhas.</p>
+          <p>A resposta padrão do mercado era um tema comprado com dez plugins por cima, ou um sistema gigante que não encaixava em nada. Os dois preferiram fazer diferente: sentar com o cliente, entender o processo de verdade e construir só o que aquele caso pedia.</p>
+          <p>A Splash nasceu disso. O nome é sobre respingo — e sobre fazer a coisa certa sem espalhar bagunça em volta.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OS DOIS FUNDADORES -->
+  <div class="section">
+    <div class="wrap">
+      <div class="measure"><span class="tick"></span><span class="ref">Quem faz</span></div>
+      <h2 style="font-size: 34px; line-height: 1.14; font-weight: 700;">Os dois fundadores</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--linha); border: 1px solid var(--linha); margin-top: 36px;">
+        <div style="background: var(--papel); padding: 36px;">
+          <div style="width: 84px; height: 84px; background: var(--bruma); border: 1px solid var(--linha); display: flex; align-items: center; justify-content: center;"><span class="mono" style="font-size: 22px; color: var(--concreto);">BD</span></div>
+          <h3 style="font-size: 22px; font-weight: 700; margin-top: 20px;">Bernardo Dornelles</h3>
+          <p class="ref" style="color: var(--mare); margin-top: 4px;">Co-fundador · arquitetura e código</p>
+          <p style="font-size: 15.5px; color: var(--tinta); margin-top: 16px;">Leva a conversa inicial, decide a stack de cada projeto e escreve a maior parte do código. É quem responde quando a pergunta é técnica.</p>
+        </div>
+        <div style="background: var(--papel); padding: 36px;">
+          <div style="width: 84px; height: 84px; background: var(--bruma); border: 1px solid var(--linha); display: flex; align-items: center; justify-content: center;"><span class="mono" style="font-size: 22px; color: var(--concreto);">SP</span></div>
+          <h3 style="font-size: 22px; font-weight: 700; margin-top: 20px;">Selso Pacheco</h3>
+          <p class="ref" style="color: var(--mare); margin-top: 4px;">Co-fundador · processo e entrega</p>
+          <p style="font-size: 15.5px; color: var(--tinta); margin-top: 16px;">Mapeia como o cliente já trabalha, organiza as entregas em partes e acompanha o projeto depois que sobe. É quem garante que o que foi combinado é o que chega.</p>
+        </div>
+      </div>
+      <p style="font-size: 15px; color: var(--concreto); margin-top: 20px; max-width: 64ch;">
+        Nos dois casos, a mesma pessoa que você conhece na primeira conversa segue no projeto até o fim. Nada de "vou passar pro time responsável".
+      </p>
+    </div>
+  </div>
+
+  <!-- COMO TRABALHAM -->
+  <div class="section">
+    <div class="wrap">
+      <div class="measure"><span class="tick"></span><span class="ref">Como trabalham</span></div>
+      <h2 style="font-size: 34px; line-height: 1.14; font-weight: 700;">Quatro regras que não mudam</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 36px;">
+        <div><h3 style="font-size: 18px; font-weight: 700;">Escopo e preço fechados antes de começar</h3><p style="font-size: 15px; color: var(--concreto); margin-top: 8px;">Você sabe o que vai receber e quanto custa. Sem cobrança por hora, sem surpresa no fim.</p></div>
+        <div><h3 style="font-size: 18px; font-weight: 700;">Entrega em partes usáveis</h3><p style="font-size: 15px; color: var(--concreto); margin-top: 8px;">Cada etapa que sobe já serve pra alguma coisa. Você não espera meses pra ver algo funcionando.</p></div>
+        <div><h3 style="font-size: 18px; font-weight: 700;">O código e os dados são seus</h3><p style="font-size: 15px; color: var(--concreto); margin-top: 8px;">Acesso completo ao repositório e ao banco. Se um dia quiser levar pra outra pessoa, leva.</p></div>
+        <div><h3 style="font-size: 18px; font-weight: 700;">Conversa em português</h3><p style="font-size: 15px; color: var(--concreto); margin-top: 8px;">Decisão técnica explicada de um jeito que você entende e consegue discordar.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMO ATENDE -->
+  <div class="section">
+    <div class="wrap">
+      <div class="measure"><span class="tick"></span><span class="ref">Como atende</span></div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;">
+        <div>
+          <h2 style="font-size: 34px; line-height: 1.14; font-weight: 700;">Presencial quando dá pra sentar na mesma mesa. Remoto para o resto.</h2>
+          <p style="font-size: 15.5px; color: var(--concreto); margin-top: 18px;">
+            Quando a distância permite, a gente prefere as primeiras conversas presenciais — ajuda a
+            entender o processo de perto. Fora disso, o projeto roda por chamada de vídeo, com o mesmo
+            acompanhamento e a mesma proximidade.
+          </p>
+          <div class="dim" style="margin-top: 24px;"><span>resposta no WhatsApp</span><span class="rule"></span><span style="color: var(--tinta); font-weight: 600;">≤ 1 dia útil</span></div>
+        </div>
+        <div style="border: 1px solid var(--linha); background: var(--papel); aspect-ratio: 4 / 3; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+          <svg viewBox="0 0 400 300" style="position: absolute; inset: 0; width: 100%; height: 100%;">
+            <defs>
+              <filter id="inkS" x="-30%" y="-30%" width="160%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="5" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="60" xChannelSelector="R" yChannelSelector="G"/><feGaussianBlur stdDeviation="1.1"/></filter>
+              <radialGradient id="dropS" cx="45%" cy="42%" r="55%"><stop offset="0%" stop-color="var(--respingo)" stop-opacity="0.5"/><stop offset="55%" stop-color="var(--mare)" stop-opacity="0.26"/><stop offset="100%" stop-color="var(--mare)" stop-opacity="0"/></radialGradient>
+            </defs>
+            <rect width="400" height="300" fill="var(--bruma)"/>
+            <g filter="url(#inkS)"><circle cx="200" cy="150" r="110" fill="url(#dropS)"/><circle cx="300" cy="80" r="10" fill="var(--respingo)" fill-opacity="0.4"/></g>
+          </svg>
+          <span class="ref" style="position: relative; color: var(--concreto);">Splash — assinatura</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section" style="border-bottom: 1px solid var(--linha-forte);">
+    <div class="wrap">
+      <div class="measure"><span class="tick"></span><span class="ref">Próximo passo</span></div>
+      <h2 style="font-size: 40px; line-height: 1.1; font-weight: 800; max-width: 20ch;">Quer conversar sobre um projeto?</h2>
+      <div style="display: flex; gap: 16px; margin-top: 26px;">
+        <a class="btn" href="https://wa.me/5551982135882"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg> Chamar no WhatsApp</a>
+        <a href="mailto:contato@splashsistemas.com.br" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 24px; border: 1px solid var(--mare); font-weight: 600;"><svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg> contato@splashsistemas.com.br</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"theme":{"editor":"enum","default":"claro","options":["claro","escuro"],"section":"Tema"}}'>
+class Component extends DCLogic {
+  renderVals() { return { theme: this.props.theme === "escuro" ? "dark" : "light" }; }
+}
+</script>
+</body>
+</html>

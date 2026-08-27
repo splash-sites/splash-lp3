@@ -1,0 +1,30 @@
+---
+// Seção com a coluna de medida da prancha técnica.
+interface Props {
+  refLabel?: string;
+  id?: string;
+  as?: 'section' | 'div';
+  border?: boolean;
+  class?: string;
+}
+const {
+  refLabel,
+  id,
+  as: Tag = 'section',
+  border = true,
+  class: cls = '',
+} = Astro.props;
+---
+<Tag id={id} class={`${border ? 'border-t border-linha' : ''} py-20 md:py-28 ${cls}`}>
+  <div class="relative mx-auto max-w-wrap px-6 md:pl-[88px] md:pr-10">
+    {
+      refLabel && (
+        <div class="measure">
+          <span class="tick" />
+          <span class="ref">{refLabel}</span>
+        </div>
+      )
+    }
+    <slot />
+  </div>
+</Tag>

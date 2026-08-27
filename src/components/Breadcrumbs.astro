@@ -1,0 +1,48 @@
+---
+import { SITE } from '../consts';
+import JsonLd from './JsonLd.astro';
+
+interface Crumb {
+  label: string;
+  href?: string;
+}
+interface Props {
+  items: Crumb[];
+}
+const { items } = Astro.props;
+
+// Sempre começa em "Início".
+const crumbs: Crumb[] = [{ label: 'Início', href: '/' }, ...items];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.label,
+    ...(c.href ? { item: `${SITE.url}${c.href === '/' ? '' : c.href}` } : {}),
+  })),
+};
+---
+<nav aria-label="Trilha de navegação" class="mx-auto max-w-wrap px-6 pt-6 md:px-10">
+  <ol class="flex flex-wrap items-center gap-2 font-mono text-[12px] uppercase tracking-ref text-concreto">
+    {
+      crumbs.map((c, i) => (
+        <li class="flex items-center gap-2">
+          {c.href && i < crumbs.length - 1 ? (
+            <a class="hover:text-mare" href={c.href}>
+              {c.label}
+            </a>
+          ) : (
+            <span aria-current="page" class="text-tinta">
+              {c.label}
+            </span>
+          )}
+          {i < crumbs.length - 1 && <span aria-hidden="true">/</span>}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+<JsonLd data={jsonLd} />

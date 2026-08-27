@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Icon from '../../components/Icon.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { portfolio } from '../../data/portfolio';
+
+const title = 'Portfólio de sites e sistemas | Splash Sistemas';
+const description =
+  'Projetos de criação de sites, landing pages e sistemas sob medida feitos pela Splash. Cases reais em breve.';
+---
+<BaseLayout title={title} description={description} path="/portfolio">
+  <Breadcrumbs items={[{ label: 'Portfólio' }]} />
+
+  <div class="mx-auto max-w-wrap px-6 pb-12 pt-8 md:pl-[88px] md:pr-10">
+    <p class="ref mb-4 text-mare">Trabalhos da Splash</p>
+    <h1 class="max-w-[20ch] text-[36px] font-extrabold leading-[1.06] md:text-[52px]">
+      Projetos de sites e sistemas feitos pela Splash
+    </h1>
+    <p class="mt-5 max-w-[60ch] text-[19px] text-concreto">
+      Estamos montando esta página com cases reais, cada um com o setor, o que foi construído e o
+      resultado combinado com o cliente. Enquanto isso, os cartões abaixo mostram a estrutura.
+    </p>
+  </div>
+
+  <div class="mx-auto max-w-wrap px-6 pb-24 md:pl-[88px] md:pr-10">
+    <div class="grid gap-px border border-linha bg-linha md:grid-cols-3">
+      {
+        portfolio.map((c) => (
+          <a href={`/portfolio/${c.slug}`} class="group bg-papel">
+            <div class="relative border-b border-linha">
+              <Image
+                src={c.cover}
+                alt={c.coverAlt}
+                width={520}
+                height={390}
+                loading="lazy"
+                class="aspect-[4/3] w-full object-cover opacity-60"
+              />
+              {c.placeholder && (
+                <span class="ref absolute inset-0 flex items-center justify-center bg-bruma/80">
+                  [ ESPAÇO PARA CASE REAL ]
+                </span>
+              )}
+            </div>
+            <div class="p-6">
+              <p class="ref">{c.sector}</p>
+              <h2 class="mt-2 text-[18px] font-bold text-tinta">{c.title}</h2>
+              <p class="mt-2 text-[14.5px] text-concreto">{c.summary}</p>
+              <span class="mt-4 inline-flex items-center gap-2 text-[14px] font-semibold text-mare">
+                Ver case <Icon name="arrow-right" size={16} />
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+    {/* TODO: substituir todos os itens acima por [CASES REAIS] e remover a flag placeholder. */}
+  </div>
+
+  <CtaBand
+    title="Seu projeto pode ser o próximo case."
+    text="Conta o que a sua empresa precisa. A gente responde com um plano e, se topar, o resultado entra aqui."
+  />
+</BaseLayout>

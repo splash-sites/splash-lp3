@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: #F2F4F8; }
+    .page {
+      --tinta: #0E1420; --mare: oklch(56% 0.19 258); --mare-forte: oklch(46% 0.19 258); --respingo: oklch(72% 0.15 252);
+      --concreto: #5A6070; --bruma: #DFE3EC; --areia: #F2F4F8; --papel: #FFFFFF;
+      --linha: rgba(14, 20, 32, 0.14); --linha-forte: rgba(14, 20, 32, 0.32);
+      font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; color: var(--tinta);
+      background: var(--areia); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+      width: 1440px; min-height: 100%; overflow: hidden;
+    }
+    .page[data-theme="dark"] {
+      --tinta: #E9ECF4; --mare: oklch(72% 0.15 258); --mare-forte: oklch(80% 0.13 258); --respingo: oklch(78% 0.13 252);
+      --concreto: #8A92A6; --bruma: #1E2636; --areia: #0E1420; --papel: #171E2C;
+      --linha: rgba(233, 236, 244, 0.16); --linha-forte: rgba(233, 236, 244, 0.34);
+    }
+    .page a { color: var(--mare); text-decoration: none; }
+    .page a:hover { color: var(--mare-forte); }
+    h1, h2, h3, h4 { font-family: 'Bricolage Grotesque', 'Archivo', sans-serif; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+    p { margin: 0; }
+    .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+    .ref { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--concreto); }
+    .wrap { width: 1200px; margin: 0 auto; padding-left: 64px; position: relative; }
+    .measure { position: absolute; left: 0; top: 6px; width: 64px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+    .measure .tick { width: 22px; height: 1px; background: var(--linha-forte); }
+    .measure .ref { writing-mode: vertical-rl; transform: rotate(180deg); margin-top: 6px; white-space: nowrap; }
+    .icon { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.6; }
+    .chip { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; padding: 8px 14px; border: 1px solid var(--linha); color: var(--concreto); background: var(--papel); cursor: pointer; }
+    .chip[data-on="1"] { border-color: var(--mare); color: var(--mare); }
+    .chip:hover { border-color: var(--mare); }
+    .btn { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; padding: 12px 18px; border: 1px solid var(--mare); background: var(--mare); color: #fff; text-decoration: none; }
+    .btn:hover { background: var(--mare-forte); color: #fff; }
+  </style>
+</helmet>
+
+<div class="page" data-theme="{{theme}}">
+
+  <div style="border-bottom: 1px solid var(--linha); background: var(--areia);">
+    <div class="wrap" style="padding: 22px 0; display: flex; align-items: center; justify-content: space-between;">
+      <div style="display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.03em;">Splash</span>
+        <span class="ref">Sistemas</span>
+      </div>
+      <nav style="display: flex; align-items: center; gap: 30px; font-size: 15px; font-weight: 500;">
+        <a href="#" style="color: var(--tinta);">Serviços</a>
+        <a href="#" style="color: var(--tinta);">Portfólio</a>
+        <a href="#" style="color: var(--mare);">Blog</a>
+        <a href="#" style="color: var(--tinta);">Sobre</a>
+        <a class="btn" href="https://wa.me/5551982135882"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/></svg> Falar no WhatsApp</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding: 64px 0 40px;">
+    <div class="measure"><span class="tick"></span><span class="ref">Blog · índice</span></div>
+    <p class="ref" style="color: var(--mare); margin-bottom: 16px;">Notas do estúdio</p>
+    <h1 style="font-size: 52px; line-height: 1.06; font-weight: 800; max-width: 20ch;">
+      O que a gente aprende construindo site e sistema sob medida.
+    </h1>
+    <p style="font-size: 19px; color: var(--concreto); margin-top: 20px; max-width: 60ch;">
+      Textos curtos e diretos sobre SEO, performance, sistemas internos e o processo de trabalho da Splash. Sem jargão de agência.
+    </p>
+
+    <div style="display: flex; align-items: center; gap: 16px; margin-top: 36px;">
+      <div style="flex: 1; max-width: 420px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--linha); background: var(--papel); padding: 12px 16px;">
+        <svg class="icon" style="stroke: var(--concreto);" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <span style="color: var(--concreto); font-size: 15px;">Buscar por assunto…</span>
+      </div>
+      <span class="ref">6 artigos</span>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;">
+      <span class="chip" data-on="1">Todos</span>
+      <span class="chip">SEO local</span>
+      <span class="chip">Performance</span>
+      <span class="chip">Sistemas</span>
+      <span class="chip">Processo</span>
+      <span class="chip">Negócio local</span>
+    </div>
+  </div>
+
+  <!-- DESTAQUE -->
+  <div class="wrap" style="padding-bottom: 44px;">
+    <a href="#" style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; border: 1px solid var(--linha); background: var(--papel);">
+      <div style="background: var(--bruma); min-height: 320px; display: flex; align-items: flex-end; padding: 24px;">
+        <span class="ref" style="color: var(--concreto);">[ ESPAÇO PARA IMAGEM DO ARTIGO ]</span>
+      </div>
+      <div style="padding: 40px; display: flex; flex-direction: column; justify-content: center;">
+        <p class="ref" style="color: var(--mare);">SEO local · 18 ago 2026 · 6 min</p>
+        <h2 style="font-size: 30px; line-height: 1.15; font-weight: 700; margin-top: 14px;">
+          SEO local: como aparecer pra quem busca “perto de mim”
+        </h2>
+        <p style="color: var(--concreto); margin-top: 14px; font-size: 15.5px;">
+          Ficha do Google, nome consistente em todo lugar, páginas por bairro e por serviço. O que
+          move o ponteiro pra um negócio que atende uma região, e o que é perda de tempo.
+        </p>
+        <span style="margin-top: 20px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">Ler artigo <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+  </div>
+
+  <!-- LISTA -->
+  <div class="wrap" style="padding-bottom: 80px;">
+    <div style="border-top: 1px solid var(--linha-forte);">
+      <a href="#" style="display: grid; grid-template-columns: 170px 1fr 120px; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--linha); align-items: baseline;">
+        <span class="ref" style="color: var(--concreto);">Performance</span>
+        <div><h3 style="font-size: 20px; font-weight: 700; color: var(--tinta);">First-paint abaixo de 1s: o que a gente corta pra chegar lá</h3><p style="color: var(--concreto); font-size: 15px; margin-top: 6px;">Fontes, imagens, scripts de terceiros e o custo escondido de cada “só mais um plugin”.</p></div>
+        <span class="ref" style="color: var(--concreto); text-align: right;">11 ago · 5 min</span>
+      </a>
+      <a href="#" style="display: grid; grid-template-columns: 170px 1fr 120px; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--linha); align-items: baseline;">
+        <span class="ref" style="color: var(--concreto);">Sistemas</span>
+        <div><h3 style="font-size: 20px; font-weight: 700; color: var(--tinta);">Planilha ou sistema? Quando vale trocar</h3><p style="color: var(--concreto); font-size: 15px; margin-top: 6px;">Três sinais de que a planilha virou risco: gente pisando no dado do outro, fórmula quebrada, histórico perdido.</p></div>
+        <span class="ref" style="color: var(--concreto); text-align: right;">04 ago · 7 min</span>
+      </a>
+      <a href="#" style="display: grid; grid-template-columns: 170px 1fr 120px; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--linha); align-items: baseline;">
+        <span class="ref" style="color: var(--concreto);">Negócio local</span>
+        <div><h3 style="font-size: 20px; font-weight: 700; color: var(--tinta);">Site de negócio sazonal: o que muda quando o movimento é concentrado</h3><p style="color: var(--concreto); font-size: 15px; margin-top: 6px;">Preparar a página pra pico de temporada sem pagar servidor grande o ano todo.</p></div>
+        <span class="ref" style="color: var(--concreto); text-align: right;">28 jul · 6 min</span>
+      </a>
+      <a href="#" style="display: grid; grid-template-columns: 170px 1fr 120px; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--linha); align-items: baseline;">
+        <span class="ref" style="color: var(--concreto);">Processo</span>
+        <div><h3 style="font-size: 20px; font-weight: 700; color: var(--tinta);">Escopo fechado: por que a gente não cobra por hora</h3><p style="color: var(--concreto); font-size: 15px; margin-top: 6px;">O que você ganha sabendo o preço antes, e o que a gente pede em troca pra que isso funcione.</p></div>
+        <span class="ref" style="color: var(--concreto); text-align: right;">21 jul · 4 min</span>
+      </a>
+      <a href="#" style="display: grid; grid-template-columns: 170px 1fr 120px; gap: 32px; padding: 28px 0; border-bottom: 1px solid var(--linha); align-items: baseline;">
+        <span class="ref" style="color: var(--concreto);">Processo</span>
+        <div><h3 style="font-size: 20px; font-weight: 700; color: var(--tinta);">Landing page ou site institucional: qual a sua campanha pede</h3><p style="color: var(--concreto); font-size: 15px; margin-top: 6px;">Uma página só, foco em uma ação, contra um site que precisa dar conta de tudo o ano inteiro.</p></div>
+        <span class="ref" style="color: var(--concreto); text-align: right;">14 jul · 5 min</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"theme":{"editor":"enum","default":"claro","options":["claro","escuro"],"section":"Tema"}}'>
+class Component extends DCLogic {
+  renderVals() { return { theme: this.props.theme === "escuro" ? "dark" : "light" }; }
+}
+</script>
+</body>
+</html>

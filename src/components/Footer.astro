@@ -1,0 +1,76 @@
+---
+import { CONTACT, FOOTER_LINKS, SITE } from '../consts';
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-linha-forte bg-areia">
+  <div class="mx-auto max-w-wrap px-6 py-16 md:px-10">
+    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
+      <div>
+        <span class="font-display text-[22px] font-extrabold tracking-[-0.03em] text-tinta"
+          >Splash Sistemas</span
+        >
+        <p class="mt-3 max-w-[32ch] text-[14.5px] text-concreto">
+          Criação de sites e sistemas sob medida. Atendimento direto com quem programa,
+          presencial combinado ou remoto.
+        </p>
+      </div>
+
+      <nav aria-label="Serviços">
+        <p class="ref">Serviços</p>
+        <ul class="mt-4 flex flex-col gap-2.5 text-[14.5px]">
+          {
+            FOOTER_LINKS.servicos.map((l) => (
+              <li>
+                <a class="text-tinta hover:text-mare" href={l.href}>
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <nav aria-label="Conteúdo">
+        <p class="ref">Conteúdo</p>
+        <ul class="mt-4 flex flex-col gap-2.5 text-[14.5px]">
+          {
+            FOOTER_LINKS.conteudo.map((l) => (
+              <li>
+                <a class="text-tinta hover:text-mare" href={l.href}>
+                  {l.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div>
+        <p class="ref">Contato</p>
+        <ul class="mt-4 flex flex-col gap-2.5 text-[14.5px]">
+          <li>
+            <a class="text-tinta hover:text-mare" href={CONTACT.whatsappLink} target="_blank" rel="noopener noreferrer"
+              >WhatsApp {CONTACT.whatsappDisplay}</a
+            >
+          </li>
+          <li>
+            <a class="text-tinta hover:text-mare" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+          </li>
+          <li>
+            <a class="text-tinta hover:text-mare" href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer"
+              >Instagram {CONTACT.instagramHandle}</a
+            >
+          </li>
+          <li class="ref">{CONTACT.addressLocality} · {CONTACT.addressRegion}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-10 flex flex-col gap-2 border-t border-linha pt-5 text-[13px] text-concreto sm:flex-row sm:justify-between"
+    >
+      <span>© {year} {SITE.name}</span>
+      <span class="font-mono">Sem gambiarra, sem molde pronto.</span>
+    </div>
+  </div>
+</footer>

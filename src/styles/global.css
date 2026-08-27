@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ *
+ * Sistema de tokens do canvas — tema claro e escuro.
+ * Nenhuma cor fica presa apenas dentro de @media: o bloco :root define
+ * a paleta clara completa; @media e [data-theme] apenas redefinem os
+ * mesmos tokens.
+ * ------------------------------------------------------------------ */
+:root {
+  --tinta: #0e1420;
+  --mare: oklch(56% 0.19 258);
+  --mare-forte: oklch(46% 0.19 258);
+  --respingo: oklch(72% 0.15 252);
+  --concreto: #5a6070;
+  --bruma: #dfe3ec;
+  --areia: #f2f4f8;
+  --papel: #ffffff;
+  --linha: rgba(14, 20, 32, 0.14);
+  --linha-forte: rgba(14, 20, 32, 0.32);
+  --foco: oklch(56% 0.19 258);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --tinta: #e9ecf4;
+    --mare: oklch(72% 0.15 258);
+    --mare-forte: oklch(80% 0.13 258);
+    --respingo: oklch(78% 0.13 252);
+    --concreto: #8a92a6;
+    --bruma: #1e2636;
+    --areia: #0e1420;
+    --papel: #171e2c;
+    --linha: rgba(233, 236, 244, 0.16);
+    --linha-forte: rgba(233, 236, 244, 0.34);
+    --foco: oklch(78% 0.13 252);
+  }
+}
+
+:root[data-theme='dark'] {
+  --tinta: #e9ecf4;
+  --mare: oklch(72% 0.15 258);
+  --mare-forte: oklch(80% 0.13 258);
+  --respingo: oklch(78% 0.13 252);
+  --concreto: #8a92a6;
+  --bruma: #1e2636;
+  --areia: #0e1420;
+  --papel: #171e2c;
+  --linha: rgba(233, 236, 244, 0.16);
+  --linha-forte: rgba(233, 236, 244, 0.34);
+  --foco: oklch(78% 0.13 252);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--areia);
+  color: var(--tinta);
+  font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Bricolage Grotesque', 'Archivo', sans-serif;
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  color: var(--tinta);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--mare);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--mare-forte);
+}
+
+/* Foco de teclado sempre visível. */
+:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+/* Rótulo mono em caixa alta — a "referência de folha" da prancha técnica. */
+.ref {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--concreto);
+}
+
+/* Coluna de medida à esquerda das seções (desktop). */
+.measure {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+.measure .tick {
+  width: 22px;
+  height: 1px;
+  background: var(--linha-forte);
+}
+.measure .ref {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  margin-top: 6px;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .measure {
+    position: static;
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .measure .ref {
+    writing-mode: horizontal-tb;
+    transform: none;
+    margin-top: 0;
+  }
+}
+
+/* Linha de cota — anota um número real. */
+.dim {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--concreto);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+}
+.dim .rule {
+  height: 1px;
+  background: var(--mare);
+  flex: 1 1 40px;
+  position: relative;
+}
+.dim .rule::before,
+.dim .rule::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  width: 1px;
+  height: 7px;
+  background: var(--mare);
+}
+.dim .rule::before {
+  left: 0;
+}
+.dim .rule::after {
+  right: 0;
+}
+
+/* Tipografia de leitura do blog — ~65 caracteres de largura. */
+.prose {
+  max-width: 65ch;
+}
+.prose > * + * {
+  margin-top: 20px;
+}
+.prose h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 48px;
+  line-height: 1.2;
+}
+.prose h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 32px;
+}
+.prose p,
+.prose li {
+  font-size: 18px;
+  line-height: 1.72;
+}
+.prose ul,
+.prose ol {
+  padding-left: 22px;
+}
+.prose li + li {
+  margin-top: 10px;
+}
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose blockquote {
+  margin: 32px 0;
+  padding-left: 22px;
+  border-left: 2px solid var(--mare);
+  font-size: 20px;
+  line-height: 1.55;
+}
+.prose strong {
+  font-weight: 700;
+}
+
+/* Animação da assinatura splash — some com prefers-reduced-motion. */
+@keyframes splashDrift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.splash-drift {
+  animation: splashDrift 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

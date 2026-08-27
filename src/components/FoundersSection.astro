@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import bernardo from '../assets/team/bernardo.jpeg';
+import selso from '../assets/team/selso.jpeg';
+
+interface Props {
+  variant?: 'compact' | 'full';
+}
+const { variant = 'compact' } = Astro.props;
+
+// TODO: substituir por [BIO DOS FUNDADORES] real quando houver texto aprovado.
+const founders = [
+  {
+    name: 'Bernardo Dornelles',
+    role: 'Co-fundador · arquitetura e código',
+    img: bernardo,
+    bio: 'Leva a conversa inicial, decide a stack de cada projeto e escreve a maior parte do código. É quem responde quando a pergunta é técnica.',
+  },
+  {
+    name: 'Selso Pacheco',
+    role: 'Co-fundador · processo e entrega',
+    img: selso,
+    bio: 'Mapeia como o cliente já trabalha, organiza as entregas em partes e acompanha o projeto depois que sobe. É quem garante que o que foi combinado é o que chega.',
+  },
+];
+---
+<div class="mt-10 grid gap-px border border-linha bg-linha md:grid-cols-2">
+  {
+    founders.map((f) => (
+      <div class="flex items-start gap-5 bg-papel p-8">
+        <Image
+          src={f.img}
+          alt={`Retrato de ${f.name}, co-fundador da Splash Sistemas`}
+          width={variant === 'full' ? 96 : 64}
+          height={variant === 'full' ? 96 : 64}
+          loading="lazy"
+          class="shrink-0 border border-linha object-cover"
+          style={`width:${variant === 'full' ? 96 : 64}px;height:${variant === 'full' ? 96 : 64}px`}
+        />
+        <div>
+          <h3 class="text-[19px] font-bold md:text-[22px]">{f.name}</h3>
+          <p class="ref mt-1 text-mare">{f.role}</p>
+          <p class="mt-3 text-[15px] text-tinta">{f.bio}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>

@@ -1,0 +1,46 @@
+---
+// Assinatura "splash": mancha de tinta na água, tom único.
+// Usada só duas vezes por página — hero e CTA final. defs próprio, id único.
+interface Props {
+  variant?: 'hero' | 'cta';
+  class?: string;
+}
+const { variant = 'hero', class: cls = '' } = Astro.props;
+const uid = `sp-${Math.random().toString(36).slice(2, 8)}`;
+const isHero = variant === 'hero';
+---
+<svg
+  class={`splash-drift ${cls}`}
+  viewBox={isHero ? '0 0 900 700' : '0 0 600 400'}
+  preserveAspectRatio="xMidYMid slice"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <filter id={`ink-${uid}`} x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed={isHero ? 7 : 4} result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale={isHero ? 120 : 110} xChannelSelector="R" yChannelSelector="G" />
+      <feGaussianBlur stdDeviation="1.4" />
+    </filter>
+    <radialGradient id={`drop-${uid}`} cx="45%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="var(--respingo)" stop-opacity="0.5" />
+      <stop offset="55%" stop-color="var(--mare)" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="var(--mare)" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <g filter={`url(#ink-${uid})`}>
+    {isHero ? (
+      <>
+        <circle cx="430" cy="320" r="240" fill={`url(#drop-${uid})`} />
+        <circle cx="250" cy="170" r="26" fill="var(--mare)" fill-opacity="0.16" />
+        <circle cx="640" cy="470" r="15" fill="var(--respingo)" fill-opacity="0.32" />
+        <circle cx="700" cy="150" r="9" fill="var(--mare)" fill-opacity="0.2" />
+      </>
+    ) : (
+      <>
+        <circle cx="300" cy="200" r="150" fill={`url(#drop-${uid})`} />
+        <circle cx="470" cy="120" r="10" fill="var(--respingo)" fill-opacity="0.38" />
+      </>
+    )}
+  </g>
+</svg>
