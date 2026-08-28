@@ -3,6 +3,7 @@
 // foi escrito — está marcado com detailPending e texto entre colchetes.
 // TODO: escrever o detalhe de cada case e adicionar a URL real (campo `link`).
 // TODO: trocar as imagens de capa por captura real de cada projeto.
+// TODO: preencher `domain` de cada case — aparece na barra da moldura de navegador.
 
 import case1 from '../assets/portfolio/case-1.jpg';
 import case2 from '../assets/portfolio/case-2.jpg';
@@ -22,6 +23,8 @@ export type PortfolioCase = {
   year: string;
   cover: ImageMetadata;
   coverAlt: string;
+  /** domínio mostrado na barra da moldura de navegador; vazio esconde a barra */
+  domain: string;
   summary: string;
   problem: string;
   solution: string;
@@ -43,6 +46,7 @@ export const portfolio: PortfolioCase[] = [
     year: '2026',
     cover: case1,
     coverAlt: 'Prévia da landing page do escritório de advocacia Bastos & Ferreira.',
+    domain: '',
     summary:
       'Escritório de advocacia em São Paulo. Landing page direta ao ponto, feita para transformar visita em conversa no WhatsApp.',
     problem: '[PROBLEMA RESOLVIDO]: o que estava travando o escritório antes do projeto.',
@@ -62,6 +66,7 @@ export const portfolio: PortfolioCase[] = [
     year: '2026',
     cover: case2,
     coverAlt: 'Prévia do site institucional do residencial sênior Vila Horizonte.',
+    domain: '',
     summary:
       'Residencial sênior de alto padrão. Site institucional completo, com estrutura de páginas, depoimentos e agendamento de visita.',
     problem: '[PROBLEMA RESOLVIDO]: o que o site precisava resolver para as famílias.',
@@ -81,6 +86,7 @@ export const portfolio: PortfolioCase[] = [
     year: '2026',
     cover: case3,
     coverAlt: 'Prévia do site da clínica Éclat Estética Avançada, com seção de antes e depois.',
+    domain: '',
     summary:
       'Clínica de estética em Torres, RS. Site com antes e depois, tratamentos e agendamento, mais uma landing page de campanha, pronto para escalar com automação.',
     problem: '[PROBLEMA RESOLVIDO]: o que a clínica precisava mostrar e automatizar.',

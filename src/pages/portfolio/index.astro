@@ -5,6 +5,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Icon from '../../components/Icon.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import Stars from '../../components/Stars.astro';
+import BrowserFrame from '../../components/BrowserFrame.astro';
 import { portfolio } from '../../data/portfolio';
 import { reviews, reviewStats } from '../../data/reviews';
 import { CONTACT } from '../../consts';
@@ -31,18 +32,23 @@ const description =
     <div class="grid gap-px border border-linha bg-linha md:grid-cols-3">
       {
         portfolio.map((c) => (
-          <a href={`/portfolio/${c.slug}`} class="group bg-papel transition-colors hover:bg-bruma">
-            <div class="border-b border-linha">
-              <Image
-                src={c.cover}
-                alt={c.coverAlt}
-                width={520}
-                height={390}
-                loading="lazy"
-                class="aspect-[4/3] w-full object-cover object-top"
-              />
+          <a
+            href={`/portfolio/${c.slug}`}
+            class="group flex flex-col bg-papel transition-colors hover:bg-bruma"
+          >
+            <div class="p-4">
+              <BrowserFrame domain={c.domain}>
+                <Image
+                  src={c.cover}
+                  alt={c.coverAlt}
+                  width={520}
+                  height={390}
+                  loading="lazy"
+                  class="aspect-[4/3] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
+                />
+              </BrowserFrame>
             </div>
-            <div class="p-6">
+            <div class="px-6 pb-6">
               <p class="ref">Plano {c.plan} · {c.service}</p>
               <h2 class="mt-2 text-[18px] font-bold text-tinta">{c.title}</h2>
               <p class="mt-2 text-[14.5px] text-concreto">{c.summary}</p>
