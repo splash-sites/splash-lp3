@@ -22,18 +22,18 @@ const description = c.summary.slice(0, 150);
 
   <article class="mx-auto max-w-wrap px-6 py-12 md:pl-[88px] md:pr-10">
     {
-      c.placeholder && (
+      c.detailPending && (
         <p class="mb-6 border border-linha bg-bruma px-4 py-3 font-mono text-[12px] uppercase tracking-ref text-concreto">
-          Case de exemplo. Conteúdo placeholder, nenhum dado abaixo é real.
+          Estudo de caso detalhado em breve. Abaixo, o resumo do projeto.
         </p>
       )
     }
-    <p class="ref text-mare">{c.sector} · {c.year}</p>
+    <p class="ref text-mare">Plano {c.plan} · {c.sector}</p>
     <h1 class="mt-3 max-w-[24ch] text-[36px] font-extrabold leading-[1.08] md:text-[46px]">
       {c.title}
     </h1>
     <p class="mt-3 font-mono text-[13px] uppercase tracking-ref text-concreto">
-      Cliente: {c.client} · Serviço:
+      Serviço:
       <a class="text-mare" href={c.serviceHref}>{c.service}</a>
     </p>
 

@@ -22,6 +22,8 @@ export const CONTACT = {
   email: 'contato@splashsistemas.com.br',
   instagramHandle: '@splash.sistemas',
   instagramUrl: 'https://instagram.com/splash.sistemas',
+  // Perfil da Splash Sistemas no Google (avaliações).
+  googleReviewsUrl: 'https://share.google/QJmW4C8l3bvzW9kFc',
   hours: 'Segunda a sexta, 9h às 18h',
   // Dado local mantido para SEO (JSON-LD) e consistência de NAP. Rua fica em aberto
   // até confirmarem endereço presencial — ver README, seção Placeholders.

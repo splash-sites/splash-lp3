@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/Section.astro';
 import Button from '../components/Button.astro';
@@ -6,7 +7,8 @@ import Icon from '../components/Icon.astro';
 import SplashMark from '../components/SplashMark.astro';
 import FoundersSection from '../components/FoundersSection.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { whatsappHref } from '../consts';
+import { portfolio } from '../data/portfolio';
+import { CONTACT, whatsappHref } from '../consts';
 
 const title = 'Criação de sites e sistemas sob medida | Splash Sistemas';
 const description =
@@ -36,10 +38,7 @@ const entregas = [
     />
     <div class="relative mx-auto max-w-wrap px-6 pb-20 pt-16 md:pb-28 md:pl-[88px] md:pr-10 md:pt-24">
       <div class="measure"><span class="tick"></span><span class="ref">SEC 00 · Posicionamento</span></div>
-      <p class="font-mono text-[12px] uppercase tracking-[0.1em] text-mare">
-        Estúdio de sites e sistemas sob medida
-      </p>
-      <h1 class="mt-5 max-w-[20ch] text-[44px] font-extrabold leading-[1.03] md:text-[74px]">
+      <h1 class="max-w-[20ch] text-[44px] font-extrabold leading-[1.03] md:text-[74px]">
         Criação de sites e sistemas sob medida para o seu processo real.
       </h1>
       <p class="mt-7 max-w-[62ch] text-[20px] leading-snug">
@@ -197,35 +196,51 @@ const entregas = [
       <h2 class="max-w-[16ch] text-[32px] font-bold leading-[1.1] md:text-[40px]">
         Trabalhos recentes.
       </h2>
-      <p class="ref max-w-[34ch] md:text-right">
-        Cada case vai mostrar o setor, o que foi construído e o resultado combinado com o cliente.
+      <p class="ref max-w-[36ch] md:text-right">
+        Três projetos, um por faixa de plano: Standard, Pro e Premium.
       </p>
     </div>
-    {/* TODO: substituir por [CASES REAIS]. Enquanto isso, os cartões abaixo são placeholder. */}
     <div class="mt-10 grid gap-px border border-linha bg-linha md:grid-cols-3">
       {
-        [1, 2, 3].map(() => (
-          <div class="bg-papel">
-            <div class="flex aspect-[4/3] items-center justify-center border-b border-linha bg-bruma">
-              <span class="ref">[ ESPAÇO PARA CASE REAL ]</span>
+        portfolio.map((c) => (
+          <a href={`/portfolio/${c.slug}`} class="group bg-papel transition-colors hover:bg-bruma">
+            <div class="border-b border-linha">
+              <Image
+                src={c.cover}
+                alt={c.coverAlt}
+                width={520}
+                height={390}
+                loading="lazy"
+                class="aspect-[4/3] w-full object-cover object-top"
+              />
             </div>
             <div class="p-6">
-              <p class="ref">Setor · a definir</p>
-              <h3 class="mt-2 text-[18px] font-bold">Título do projeto</h3>
-              <p class="mt-2 text-[14.5px] text-concreto">O que foi feito e por quê, em duas linhas.</p>
+              <p class="ref">Plano {c.plan} · {c.service}</p>
+              <h3 class="mt-2 text-[18px] font-bold text-tinta">{c.title}</h3>
+              <p class="mt-2 text-[14.5px] text-concreto">{c.summary}</p>
+              <span class="mt-4 inline-flex items-center gap-2 text-[14px] font-semibold text-mare">
+                Ver projeto <Icon name="arrow-right" size={16} />
+              </span>
             </div>
-          </div>
+          </a>
         ))
       }
     </div>
     <div class="flex items-start gap-5 border border-t-0 border-linha bg-papel p-7">
       <span class="text-concreto"><Icon name="search" size={22} /></span>
       <div>
-        <p class="ref">[ ESPAÇO PARA DEPOIMENTO REAL ]</p>
+        <p class="ref">Avaliações no Google</p>
         <p class="mt-2 max-w-[70ch]">
-          Aqui entra a fala de um cliente que a Splash atendeu: nome, empresa e o que mudou depois
-          do projeto. Nada será publicado sem a autorização dele.
+          O que os clientes dizem sobre a Splash está no perfil da empresa no Google.
         </p>
+        <a
+          href={CONTACT.googleReviewsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-3 inline-flex items-center gap-2 font-semibold"
+        >
+          Ver avaliações no Google <Icon name="arrow-right" size={18} />
+        </a>
       </div>
     </div>
     <a href="/portfolio" class="mt-6 inline-flex items-center gap-2 font-semibold">
