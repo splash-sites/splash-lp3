@@ -7,7 +7,9 @@ import Icon from '../components/Icon.astro';
 import SplashMark from '../components/SplashMark.astro';
 import FoundersSection from '../components/FoundersSection.astro';
 import CtaBand from '../components/CtaBand.astro';
+import Stars from '../components/Stars.astro';
 import { portfolio } from '../data/portfolio';
+import { reviews, reviewStats } from '../data/reviews';
 import { CONTACT, whatsappHref } from '../consts';
 
 const title = 'Criação de sites e sistemas sob medida | Splash Sistemas';
@@ -226,26 +228,38 @@ const entregas = [
         ))
       }
     </div>
-    <div class="flex items-start gap-5 border border-t-0 border-linha bg-papel p-7">
-      <span class="text-concreto"><Icon name="search" size={22} /></span>
-      <div>
-        <p class="ref">Avaliações no Google</p>
-        <p class="mt-2 max-w-[70ch]">
-          O que os clientes dizem sobre a Splash está no perfil da empresa no Google.
-        </p>
-        <a
-          href={CONTACT.googleReviewsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-3 inline-flex items-center gap-2 font-semibold"
-        >
-          Ver avaliações no Google <Icon name="arrow-right" size={18} />
-        </a>
-      </div>
-    </div>
     <a href="/portfolio" class="mt-6 inline-flex items-center gap-2 font-semibold">
       Ver o portfólio <Icon name="arrow-right" size={18} />
     </a>
+
+    <div class="mt-16 border-t border-linha pt-12">
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <span class="font-display text-[44px] font-extrabold leading-none">{reviewStats.average}</span>
+        <Stars size={20} />
+        <span class="ref">{reviewStats.total} avaliações no Google</span>
+      </div>
+      <div class="mt-8 grid gap-px border border-linha bg-linha md:grid-cols-3">
+        {
+          reviews.slice(0, 6).map((r) => (
+            <figure class="flex flex-col bg-papel p-6">
+              <Stars size={14} />
+              <blockquote class="mt-3 flex-1 text-[15px] leading-relaxed text-tinta">
+                {r.text}
+              </blockquote>
+              <figcaption class="ref mt-4 not-italic">{r.author}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+      <a
+        href={CONTACT.googleReviewsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-6 inline-flex items-center gap-2 font-semibold"
+      >
+        Ver todas as avaliações no Google <Icon name="arrow-right" size={18} />
+      </a>
+    </div>
   </Section>
 
   <!-- FUNDADORES -->
