@@ -1,10 +1,9 @@
 ---
-import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Button from '../../components/Button.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import BrowserFrame from '../../components/BrowserFrame.astro';
+import PlanThumb from '../../components/PlanThumb.astro';
 import { portfolio } from '../../data/portfolio';
 import { whatsappHref } from '../../consts';
 
@@ -38,16 +37,7 @@ const description = c.summary.slice(0, 150);
       <a class="text-mare" href={c.serviceHref}>{c.service}</a>
     </p>
 
-    <BrowserFrame domain={c.domain} class="mt-8">
-      <Image
-        src={c.cover}
-        alt={c.coverAlt}
-        width={1120}
-        height={630}
-        loading="eager"
-        class="aspect-[16/9] w-full object-cover object-top"
-      />
-    </BrowserFrame>
+    <PlanThumb kind={c.thumbKind} label={c.thumbLabel} class="mt-8 max-w-[560px]" />
 
     <div class="prose mt-12">
       <h2>O problema</h2>

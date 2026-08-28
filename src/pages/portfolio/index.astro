@@ -1,11 +1,10 @@
 ---
-import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Icon from '../../components/Icon.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import Stars from '../../components/Stars.astro';
-import BrowserFrame from '../../components/BrowserFrame.astro';
+import PlanThumb from '../../components/PlanThumb.astro';
 import { portfolio } from '../../data/portfolio';
 import { reviews, reviewStats } from '../../data/reviews';
 import { CONTACT } from '../../consts';
@@ -37,16 +36,7 @@ const description =
             class="group flex flex-col bg-papel transition-colors hover:bg-bruma"
           >
             <div class="p-4">
-              <BrowserFrame domain={c.domain}>
-                <Image
-                  src={c.cover}
-                  alt={c.coverAlt}
-                  width={520}
-                  height={390}
-                  loading="lazy"
-                  class="aspect-[4/3] w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
-                />
-              </BrowserFrame>
+              <PlanThumb kind={c.thumbKind} label={c.thumbLabel} />
             </div>
             <div class="px-6 pb-6">
               <p class="ref">Plano {c.plan} · {c.service}</p>

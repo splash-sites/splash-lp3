@@ -1,0 +1,97 @@
+---
+// Miniatura em wireframe da estrutura que cada plano entrega.
+// Estilo "prancha técnica": fio fino em --concreto, um elemento em destaque
+// em --mare, linha de cota. Sem imagem, sem dependência de asset.
+interface Props {
+  kind: 'landing' | 'site' | 'site-lp';
+  label: string;
+  class?: string;
+}
+const { kind, label, class: cls = '' } = Astro.props;
+---
+<div class={`relative border border-linha bg-bruma ${cls}`}>
+  <svg
+    viewBox="0 0 320 240"
+    class="block w-full"
+    fill="none"
+    stroke="var(--concreto)"
+    stroke-width="1.5"
+    aria-hidden="true"
+  >
+    <style>rect, line, path { vector-effect: non-scaling-stroke; }</style>
+    {
+      kind === 'landing' && (
+        <>
+          {/* uma página, formato de rolagem */}
+          <rect x="106" y="22" width="104" height="196" fill="var(--papel)" />
+          <rect x="106" y="22" width="104" height="14" fill="var(--areia)" />
+          <rect
+            x="118"
+            y="50"
+            width="80"
+            height="46"
+            fill="var(--mare)"
+            fill-opacity="0.12"
+            stroke="var(--mare)"
+          />
+          <rect x="138" y="104" width="40" height="9" fill="var(--mare)" stroke="none" />
+          <line x1="118" y1="130" x2="198" y2="130" />
+          <line x1="118" y1="146" x2="198" y2="146" />
+          <line x1="118" y1="162" x2="176" y2="162" />
+          <rect x="106" y="196" width="104" height="22" fill="var(--areia)" />
+          {/* linha de cota */}
+          <line x1="224" y1="22" x2="224" y2="218" stroke="var(--mare)" />
+          <line x1="220" y1="22" x2="228" y2="22" stroke="var(--mare)" />
+          <line x1="220" y1="218" x2="228" y2="218" stroke="var(--mare)" />
+        </>
+      )
+    }
+    {
+      kind === 'site' && (
+        <>
+          {/* mapa de site: home + páginas internas */}
+          <rect x="123" y="34" width="74" height="32" fill="var(--papel)" stroke="var(--mare)" />
+          <path d="M160 66 V90 M40 90 H280 M52 90 V108 M124 90 V108 M196 90 V108 M268 90 V108" />
+          <rect x="30" y="108" width="56" height="30" fill="var(--papel)" />
+          <rect x="102" y="108" width="56" height="30" fill="var(--papel)" />
+          <rect x="174" y="108" width="56" height="30" fill="var(--papel)" />
+          <rect x="246" y="108" width="44" height="30" fill="var(--papel)" />
+          <path d="M58 138 V158 M202 138 V158" />
+          <rect x="30" y="158" width="56" height="28" fill="var(--papel)" />
+          <rect x="174" y="158" width="56" height="28" fill="var(--papel)" />
+        </>
+      )
+    }
+    {
+      kind === 'site-lp' && (
+        <>
+          {/* esquerda: mini mapa de site */}
+          <rect x="26" y="40" width="60" height="26" fill="var(--papel)" stroke="var(--mare)" />
+          <path d="M56 66 V86 M22 86 H90 M30 86 V102 M56 86 V102 M82 86 V102" />
+          <rect x="18" y="102" width="34" height="24" fill="var(--papel)" />
+          <rect x="60" y="102" width="34" height="24" fill="var(--papel)" />
+          <rect x="102" y="102" width="24" height="24" fill="var(--papel)" />
+          {/* divisor */}
+          <line x1="150" y1="26" x2="150" y2="214" stroke="var(--linha-forte)" stroke-dasharray="3 4" />
+          {/* direita: uma landing page */}
+          <rect x="196" y="34" width="96" height="172" fill="var(--papel)" />
+          <rect x="196" y="34" width="96" height="13" fill="var(--areia)" />
+          <rect
+            x="208"
+            y="58"
+            width="72"
+            height="40"
+            fill="var(--mare)"
+            fill-opacity="0.12"
+            stroke="var(--mare)"
+          />
+          <rect x="226" y="104" width="36" height="8" fill="var(--mare)" stroke="none" />
+          <line x1="208" y1="128" x2="280" y2="128" />
+          <line x1="208" y1="142" x2="280" y2="142" />
+          <rect x="196" y="188" width="96" height="18" fill="var(--areia)" />
+        </>
+      )
+    }
+  </svg>
+  <span class="ref absolute bottom-3 left-3 bg-bruma px-1">{label}</span>
+</div>

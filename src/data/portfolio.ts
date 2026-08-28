@@ -1,13 +1,7 @@
 // Os 3 exemplos de trabalho, um por faixa de plano. Nomes e descrições são reais;
 // o estudo de caso detalhado (problema / o que foi feito / resultado) ainda não
 // foi escrito — está marcado com detailPending e texto entre colchetes.
-// TODO: escrever o detalhe de cada case e adicionar a URL real (campo `link`).
-// TODO: trocar as imagens de capa por captura real de cada projeto.
-// TODO: preencher `domain` de cada case — aparece na barra da moldura de navegador.
-
-import case1 from '../assets/portfolio/case-1.jpg';
-import case2 from '../assets/portfolio/case-2.jpg';
-import case3 from '../assets/portfolio/case-3.jpg';
+// TODO: escrever o detalhe de cada case e preencher a URL real (campo `link`).
 
 export type PortfolioCase = {
   slug: string;
@@ -16,15 +10,12 @@ export type PortfolioCase = {
   /** true enquanto o estudo de caso detalhado não estiver escrito */
   detailPending: boolean;
   title: string;
-  client: string;
   sector: string;
   service: string;
   serviceHref: string;
-  year: string;
-  cover: ImageMetadata;
-  coverAlt: string;
-  /** domínio mostrado na barra da moldura de navegador; vazio esconde a barra */
-  domain: string;
+  /** capa em wireframe: estrutura que o plano entrega */
+  thumbKind: 'landing' | 'site' | 'site-lp';
+  thumbLabel: string;
   summary: string;
   problem: string;
   solution: string;
@@ -39,14 +30,11 @@ export const portfolio: PortfolioCase[] = [
     plan: 'Standard',
     detailPending: true,
     title: 'Bastos & Ferreira',
-    client: 'Bastos & Ferreira',
     sector: 'Advocacia · São Paulo',
     service: 'Landing Pages',
     serviceHref: '/landing-pages',
-    year: '2026',
-    cover: case1,
-    coverAlt: 'Prévia da landing page do escritório de advocacia Bastos & Ferreira.',
-    domain: '',
+    thumbKind: 'landing',
+    thumbLabel: '1 página',
     summary:
       'Escritório de advocacia em São Paulo. Landing page direta ao ponto, feita para transformar visita em conversa no WhatsApp.',
     problem: '[PROBLEMA RESOLVIDO]: o que estava travando o escritório antes do projeto.',
@@ -59,14 +47,11 @@ export const portfolio: PortfolioCase[] = [
     plan: 'Pro',
     detailPending: true,
     title: 'Vila Horizonte',
-    client: 'Vila Horizonte',
     sector: 'Moradia sênior · alto padrão',
     service: 'Sites Institucionais',
     serviceHref: '/sites-institucionais',
-    year: '2026',
-    cover: case2,
-    coverAlt: 'Prévia do site institucional do residencial sênior Vila Horizonte.',
-    domain: '',
+    thumbKind: 'site',
+    thumbLabel: '5 a 7 páginas',
     summary:
       'Residencial sênior de alto padrão. Site institucional completo, com estrutura de páginas, depoimentos e agendamento de visita.',
     problem: '[PROBLEMA RESOLVIDO]: o que o site precisava resolver para as famílias.',
@@ -79,14 +64,11 @@ export const portfolio: PortfolioCase[] = [
     plan: 'Premium',
     detailPending: true,
     title: 'Éclat Estética Avançada',
-    client: 'Éclat Estética Avançada',
     sector: 'Estética · Torres, RS',
     service: 'Criação de Sites',
     serviceHref: '/criacao-de-sites',
-    year: '2026',
-    cover: case3,
-    coverAlt: 'Prévia do site da clínica Éclat Estética Avançada, com seção de antes e depois.',
-    domain: '',
+    thumbKind: 'site-lp',
+    thumbLabel: 'site + landing',
     summary:
       'Clínica de estética em Torres, RS. Site com antes e depois, tratamentos e agendamento, mais uma landing page de campanha, pronto para escalar com automação.',
     problem: '[PROBLEMA RESOLVIDO]: o que a clínica precisava mostrar e automatizar.',
